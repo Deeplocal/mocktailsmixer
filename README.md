@@ -389,7 +389,7 @@ Once this is done, carefully flip bottle over into one of the bottle holding loc
 ### Step 26: Clone code repository on RPi and move files into correct location
 - Change directory: `$ cd /home/pi/`.
 - Clone repository: `$ git clone. https://oscartprom@bitbucket.org/deeplocal/googleassistantbartender.git`.
-- Update the PUBSUB_PROJECT_ID in bartender/__main__.py.
+- Update the PUBSUB_PROJECT_ID in bartender/\_\_main\_\_.py.
 - Copy files into embedded assistant directory: `$ cp -r googleassistantbartender/bartender embedded-assistant-sdk-python/googlesamples/`.
 
 ### Step 27: Prepare Arduino
@@ -404,10 +404,10 @@ Once this is done, carefully flip bottle over into one of the bottle holding loc
 
 ### Step 29: Configure your own drinks
 - Using the api.ai web console, update the agent’s @drink entity and make_drink intent to reflect the drink names.
-- On your Raspberry Pi, update the DRINK_SIZE, MENU and NUM_BOTTLES variables in bartender/__main__.py.
+- On your Raspberry Pi, update the DRINK_SIZE, MENU and NUM_BOTTLES variables in bartender/\_\_main\_\_.py.
 
 ### Step 30: Troubleshooting
-- If the LEDs or relays are not working, check the SER_DEVICE variable in bartender/__main__.py.
+- If the LEDs or relays are not working, check the SER_DEVICE variable in bartender/\_\_main\_\_.py.
 
 ## Cleaning Your Mixer
 
