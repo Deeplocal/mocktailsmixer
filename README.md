@@ -3,7 +3,7 @@
 ![](hardware/photos/hero.jpg)
 
 ## Make a DIY robotic mocktails mixer with the Google Assistant built in.
-Google teamed up with innovation studio Deeplocal to create the Google Assistant SDK: Mocktails Mixer—a DIY robotic home bartender that whips up your favorite mixed drinks at your command and serves you a splash of small talk while you wait.
+Google teamed up with innovation studio Deeplocal to create the [Google Assistant SDK: Mocktails Mixer](http://deeplocal.com/mocktailsmixer/) — a DIY robotic home bartender that whips up your favorite mixed drinks at your command and serves you a splash of small talk while you wait.
 
 **Disclaimer:** THESE INSTRUCTIONS ARE BEING PROVIDED FOR INFORMATIONAL PURPOSES ONLY AND ARE NOT INTENDED TO BE USED FOR THE PRODUCTION OF COMMERCIAL PRODUCTS.  BY EXECUTING THESE INSTRUCTIONS, YOU AGREE TO ASSUME ALL LIABILITY IN CONNECTION WITH YOUR BUILDING AND USE OF ANY DEVICE. DEEPLOCAL DISCLAIMS ALL WARRANTIES EXPRESS OR IMPLIED WITH RESPECT TO THESE INSTRUCTIONS AND ANY RESULTING DEVICE INCLUDING BUT NOT LIMITED TO WARRANTIES FOR MERCHANTABILITY, FITNESS FOR ANY PARTICULAR PURPOSE, AND NON-INFRINGEMENT.  YOU SHOULD USE EXTREME CAUTION WHEN BUILDING AND USING ANY DEVICE PURSUANT TO THESE INSTRUCTIONS.  IN NO EVENT SHALL DEEPLOCAL BE LIABLE FOR ANY CLAIM OR DAMAGES, INCLUDING BUT NOT LIMITED TO CLAIMS OR DAMAGES RELATED TO DEATH OR PERSONAL INJURY, PROPERTY DAMAGE, OR PRODUCT LIABILITY.
 
