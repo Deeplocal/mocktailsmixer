@@ -215,8 +215,6 @@ To activate the Assistant, there is a button on the side for you to push. To wir
 
 Double check the wiring. Trace all of them from each piece of hardware to their source. Once you feel good about the wiring, go ahead and power up the system. The Raspberry Pi should have a red power light visible and the Arduino should have a blue power light visible as well.
 
-Connect components to Arduino GPIO
-
 ## Building the Mixer Body Continued
 
 ### Step 8: Assemble Pump Control Center Sub
