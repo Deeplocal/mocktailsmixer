@@ -208,7 +208,7 @@ Slight interference can occur on the speaker, because of this we recommend you a
 
 ![](hardware/photos/020.jpg)
 
-### Extras
+### Final Connections
 To power the Raspberry Pi, connect a Ground line to a ground pin on the Pi, then connect a 5V line to the 5V in on the Pi.
 
 To activate the Assistant, there is a button on the side for you to push. To wire this button, connect the COM terminal to the 3.3V Out on the Raspberry Pi. Then, connect the NO terminal on the button to the button’s respective GPIO (in our case GPIO 7). For a cleaner signal, connect a resistor between the NO terminal and Ground.
