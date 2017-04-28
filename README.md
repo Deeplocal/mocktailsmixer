@@ -305,22 +305,21 @@ Once this is done, carefully flip bottle over into one of the bottle holding loc
 ![](diagrams/system_diagram.png)
 
 ### Mixer Programming Overview: How do the RPi and Assistant SDK communicate with the pumps?
-- The user presses the button to start the Google Assistant.
-- The user speaks a drink request into the microphone.
+- The user presses the physical button to start the Google Assistant and speaks a drink request into the microphone.
 - The local Python application picks up the speech and transmits it to api.ai for processing using the Assistant SDK.
 - The api.ai agent parses the input, determines its context and intent, and processes the request.
-  - In the case of a drink request, api.ai uses a webhook to process the request.
-    -A webhook is a URL endpoint that is used to process external requests.
-    - The webhook exists as a Google Cloud Function written in Node.js.
-  - Requests can also be fulfilled natively on the api.ai platform.
-  - The make_drink intent is resolved and the webhook is called, which contains a drink entity parsed from the api.ai request.
-  - The webhook publishes a message containing the specific drink over a Pub/Sub route, which is being listened for in the local Python application.
-  - The webhook also returns the text to be spoken to the user as a response to their input.
-  - The local Python application parses the Pub/Sub message and uses the RPi’s GPIO (general purpose input/output) pins to control the electronic pumps to dispense the drink.
+- For a drink request:
+  - The api.ai agent uses a webhook to process the request.
+    - The webhook is an external URL endpoint existing as a Google Cloud Function and written in Node.js.
+    - Requests can also be fulfilled natively on the api.ai platform.
+  - The webhook receives the make_drink intent and the specific drink entity from the request, publishes the relevant info over a Pub/Sub route, and returns the response text for the user.
+  - The local Python application receives and parses the Pub/Sub message, calculates how many seconds each relay should be turned on, and transmits those commands to the Arduino via serial.
+  - The Arduino uses its GPIO to control the relays and dispense the drink.
 
 ### Step 21: Create a Google Cloud Platform Project
 - Create a new project from the [Google Developers Console](https://console.developers.google.com/)
-- Locate your project ID in the dashboard and note for later use. (Read [here](https://support.google.com/cloud/answer/6158840?hl=en) for help.)
+- Locate your project ID in the dashboard and note for later use. (Read [here](https://support.google.com/cloud/answer/6158840?hl=en) for help)
+- Enable the Pub/Sub API and create a topic named "MocktailsMixerMessages." (Read [here](https://cloud.google.com/pubsub/docs/quickstart-console) for help)
 
 ### Step 22: Create Google Cloud Function
 - Clone the repository to your local machine.
@@ -336,13 +335,13 @@ Once this is done, carefully flip bottle over into one of the bottle holding loc
   - Timeout: 60 seconds
   - Trigger: HTTP trigger (**Note HTTP trigger URL for later use**)
   - Source code: ZIP upload
-  - ZIP file: (choose ZIP file created in step 2b)
+  - ZIP file: (choose ZIP file created above)
   - Stage bucket: (choose a bucket)
   - Function to execute: webhook
-  - Click “Create.”
-- Note: You may want to review the [Actions on Google](https://developers.google.com/actions/) developer guide for an introduction to conversational user interfaces.
+  - Click “Create”
 
 ### Step 23: Set up an [api.ai](https://api.ai/) agent
+Tip: You may want to review the [Actions on Google](https://developers.google.com/actions/) developer guide for an introduction to conversational user interfaces.
 - Sign into the [api.ai console](https://console.api.ai).
 - From the [agents](https://console.api.ai/api-client/#/agents) page, click “Create Agent.”
 - Give your agent a name. Select “Private” and click “Save.”
@@ -356,39 +355,37 @@ Once this is done, carefully flip bottle over into one of the bottle holding loc
   - Select “Authorize” and then “Preview.” Note: Previews are only available for a period of time. Use “Deploy” to register your conversation action with Google. The registration process can take one to two weeks. Read more [here](https://docs.api.ai/docs/actions-on-google-integration#previewing-your-conversation-action).
   - Test your agent on the [Google Home Web Simulator](https://developers.google.com/actions/tools/web-simulator).
 - Create an SD card with Raspbian Jessie with Pixel.
-[Download the compressed image.](https://www.raspberrypi.org/downloads/raspbian/)
-  - Decompress the downloaded file. (should result in YYYY-MM-DD-raspbian-jessie.img)
+  - Download the [compressed image](https://www.raspberrypi.org/downloads/raspbian/) and decompress the file. (This should result in YYYY-MM-DD-raspbian-jessie.img)
   - Insert 8GB+ microSD card into computer.
   - On a Mac, open Terminal and perform the following:
-    - Find the correct disk using the command `$ diskutil` list. You’re looking for the entire disk (/dev/diskN), which should have “(external, physical)” after it.
-    - Unmount the disk using the command `$diskutil unmountDisk /dev/diskN`.
+    - Find the correct disk using the command `$ diskutil list`. You’re looking for the entire disk i.e. `/dev/diskN`.
+    - Unmount the disk using the command `$ diskutil unmountDisk /dev/diskN`.
     - Write the image to the disk using the command `$ sudo dd bs=1m if=/path/to/YYYY-MM-DD-raspbian-jessie.img of=/dev/rdiskN`.
-    (Note the additional “r” in the output file path. Be patient; there is no feedback for this command and it can take several minutes.) WARNING: $ sudo dd is a very powerful command; double-check you have the correct disk.
+    (Note the additional “r” in the output file path. Be patient - there is no feedback for this command and it can take several minutes. WARNING: `$ sudo dd` is a very powerful command so double-check you have the correct disk.)
     - When the image has been written, eject the microSD card and insert it into your Raspberry Pi.
   - For Windows instructions, [see here](https://www.raspberrypi.org/documentation/installation/installing-images/windows.md)
   - For Linux instructions, [see here](https://www.raspberrypi.org/documentation/installation/installing-images/linux.md)
 
 ### Step 24: Follow steps in [Getting Started with the Raspberry Pi and Python.](https://developers.google.com/assistant/sdk/prototype/getting-started-pi-python/)
-- Before section “Connect to the Raspberry Pi via SSH,”  you must enable SSH
-- On a Mac, open Terminal.
-- Change directory to the root of the microSD card: `$ cd /Volumes/boot`.
-- Create an empty SSH file with no extension: `$ touch ssh`.
+- Before section “Connect to the Raspberry Pi via SSH,” you must enable SSH.
+  - On a Mac, perform the following using Terminal:
+    - Change directory to the root of the microSD card: `$ cd /Volumes/boot`
+    - Create an empty SSH file with no extension: `$ touch ssh`
 - In section “Configure a new Python virtual environment”, we used Python 3.
-- Before section “Configure and Test the Audio,” plug in a USB microphone and 3.5 mm speaker to your Raspberry Pi.
-- In sections “Configure and Test the Audio,” Step 1, if you see the following error, proceed to Step 2 and 3 to define the correct recording and playback devices, and then try Step 1 again.
+- Before section “Configure and Test the Audio,” plug in a USB microphone and 3.5mm speaker to your Raspberry Pi.
 
 ### Step 25: Install Additional Raspberry Pi Libraries
-- Change directory: `$ cd /home/pi/`.
-- Install RPi.GPIO: `$ env/bin/pip3 install RPi.GPIO`.
-- [Install python pubsub](https://cloud.google.com/pubsub/docs/reference/libraries#client-libraries-install-python): `$ env/bin/pip3 install google-cloud-pubsub`.
-- Install PySerial: `$ python -m pip install pyserial --upgrade`.
-- Install PyAudio: `$ python -m pip install pyaudio`.
+- Change directory: `$ cd /home/pi/`
+- Install RPi.GPIO: `$ env/bin/pip3 install RPi.GPIO`
+- [Install python pubsub](https://cloud.google.com/pubsub/docs/reference/libraries#client-libraries-install-python): `$ env/bin/pip3 install google-cloud-pubsub`
+- Install PySerial: `$ python -m pip install pyserial --upgrade`
+- Install PyAudio: `$ python -m pip install pyaudio`
 
 ### Step 26: Clone code repository on RPi and move files into correct location
-- Change directory: `$ cd /home/pi/`.
-- Clone repository: `$ git clone. https://oscartprom@bitbucket.org/deeplocal/googleassistantbartender.git`.
-- Update the PUBSUB_PROJECT_ID in bartender/\_\_main\_\_.py.
-- Copy files into embedded assistant directory: `$ cp -r googleassistantbartender/bartender embedded-assistant-sdk-python/googlesamples/`.
+- Change directory: `$ cd /home/pi/`
+- Clone repository: `$ git clone https://github.com/Deeplocal/mocktailsmixer.git`.
+- Update the PUBSUB_PROJECT_ID in mocktailsmixer/software/rpi/\_\_main\_\_.py
+- Copy files into embedded assistant directory: `$ cp -r mocktailsmixer/software/rpi embedded-assistant-sdk-python/googlesamples/`
 
 ### Step 27: Prepare Arduino
 - Load sketch onto board.
@@ -397,8 +394,8 @@ Once this is done, carefully flip bottle over into one of the bottle holding loc
 ### Step 28: Run system
 - Ensure you are still in the Python virtual environment. If not: `$ cd && source env/bin/activate`.
 - Change directory: `$ cd /home/pi/embedded-assistant-sdk-python`
-- Run the auth_helper to create an authorization file: `$ python -m googlesamples.bartender.auth_helpers --client-secrets /home/pi/client_secret_*.json`.
-- Run the system `$ python -m googlesamples.bartender`.
+- Run the auth_helper to create an authorization file: `$ python -m googlesamples.rpi.auth_helpers --client-secrets /home/pi/client_secret_*.json`.
+- Run the system `$ python -m googlesamples.rpi`.
 
 ### Step 29: Configure your own drinks
 - Using the api.ai web console, update the agent’s @drink entity and make_drink intent to reflect the drink names.
@@ -406,6 +403,21 @@ Once this is done, carefully flip bottle over into one of the bottle holding loc
 
 ### Step 30: Troubleshooting
 - If the LEDs or relays are not working, check the SER_DEVICE variable in bartender/\_\_main\_\_.py.
+
+## Example Transcript
+(User presses physical button.)
+
+User: Tell Mocktails Mixer to make me a cherry bomb.
+
+Assistant: Coming right up. While I make your drink, would you like to hear the weather or your fortune?
+
+User: How about the weather?
+
+Assistant: What is your ZIP code?
+
+User: 15212.
+
+Assistant: The weather in Pittsburgh, PA is 75 degrees and sunny.
 
 ## Cleaning Your Mixer
 
