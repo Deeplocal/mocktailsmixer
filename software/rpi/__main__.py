@@ -58,7 +58,7 @@ MENU = {
 
 
 # contstants
-PUBSUB_PROJECT_ID = 'autonomous-rite-162316' # todo: remove and add placeholder
+PUBSUB_PROJECT_ID = 'your-google-project-id'
 SER_DEVICE = '/dev/ttyACM0' # ensure correct file descriptor for connected arduino
 PUSH_TO_TALK = True
 PUSH_TO_TALK_PIN = 26

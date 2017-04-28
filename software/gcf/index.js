@@ -4,7 +4,7 @@ var request = require('request');
 var pubsub = require('@google-cloud/pubsub');
 var ApiAiAssistant = require('actions-on-google').ApiAiAssistant;
 
-var pubsubClient = pubsub({ projectId: 'autonomous-rite-162316' }); // todo: remove and add placeholder
+var pubsubClient = pubsub({ projectId: 'your-google-project-id' });
 var topicName = 'MocktailsMixerMessages';
 
 exports.webhook = function(req, res) {

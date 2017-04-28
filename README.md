@@ -312,7 +312,7 @@ Once this is done, carefully flip bottle over into one of the bottle holding loc
   - The api.ai agent uses a webhook to process the request.
     - The webhook is an external URL endpoint existing as a Google Cloud Function and written in Node.js.
     - Requests can also be fulfilled natively on the api.ai platform.
-  - The webhook receives the make_drink intent and the specific drink entity from the request, publishes the relevant info over a Pub/Sub route, and returns the response text for the user.
+  - The webhook receives the make_drink intent and specific drink entity from the request, publishes the relevant info over a Pub/Sub route, and returns the response text for the user.
   - The local Python application receives and parses the Pub/Sub message, calculates how many seconds each relay should be turned on, and transmits those commands to the Arduino via serial.
   - The Arduino uses its GPIO to control the relays and dispense the drink.
 
@@ -323,8 +323,8 @@ Once this is done, carefully flip bottle over into one of the bottle holding loc
 
 ### Step 22: Create Google Cloud Function
 - Clone the repository to your local machine.
-- Update “your-google-project-id” on line 7 of apiai_webhook/index.js.
-- Create a zip file including only package.json and index.js from the apiai_webhook directory.
+- Update “your-google-project-id” on line 7 of software/gcf/index.js.
+- Create a zip file including only package.json and index.js from the software/gcf/ directory.
 - Navigate to the Cloud Functions Console in a browser.
 - Ensure the correct project is selected in the dropdown at the top of the page.
 - Click “Create Function.”
