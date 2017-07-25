@@ -319,7 +319,7 @@ Once this is done, carefully flip bottle over into one of the bottle holding loc
 ### Step 21: Create a Google Cloud Platform Project
 - Create a new project from the [Google Developers Console](https://console.developers.google.com/)
 - Locate your project ID in the dashboard and note for later use. (Read [here](https://support.google.com/cloud/answer/6158840?hl=en) for help)
-- Enable the Pub/Sub API and create a topic named "MocktailsMixerMessages." (Read [here](https://cloud.google.com/pubsub/docs/quickstart-console) for help)
+- Enable the Pub/Sub API and create a topic named "MocktailsMixerMessages" (Read [here](https://cloud.google.com/pubsub/docs/quickstart-console) for help)
 
 ### Step 22: Create Google Cloud Function
 - Clone the repository to your local machine.
