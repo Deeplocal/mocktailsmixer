@@ -27,15 +27,16 @@ const request = {
   interimResults: false, // If you want interim results, set this to true
 };
 
-let transcript = '';
-let keyToggle = false;
-let transcriptCalculated = false;
-let recognizeStream;
+var transcript = 'should not be seen';
+var keyToggle = false;
+var transcriptCalculated = false;
+var recognizeStream;
+var result = 'result';
 
-const stopRecordingExport = () => {
-  exports.transcript = transcript;
-  recording.stop();
-}
+// const stopRecordingExport = () => {
+//   exports.transcript = transcript;
+//   recording.stop();
+// }
 
 // // Create a recognize stream
 
@@ -56,6 +57,10 @@ const recording = recorder
 
 
 // Event handler for keypress events
+function setResult(str) {
+  result = str;
+  console.log("i changed str",str)
+}
 function exportAud() {
   process.stdin.on('keypress', (ch, key) => {
     if (key.name == 'i') {
@@ -63,11 +68,11 @@ function exportAud() {
         console.log('stopped recording');
         recognizeStream.destroy();
         recording.stop();
-        module.exports.transcript = transcript;
-        console.log("the text:", transcript, "//has been exported");
+        result = transcript;
+        console.log("the text:", result, "//has been exported");
         transcript = '';
         keyToggle = false;
-        transcriptCalculated = false;
+        transcriptCalculated = true;
       }
       else {
         console.log('start recording');
@@ -88,18 +93,19 @@ function exportAud() {
         console.log('Listening, press Ctrl+C to stop.');
 
         keyToggle = true;
-        transcriptCalculated = true;
+        transcriptCalculated = false;
 
       }
     }
     
-    else if (key && key.ctrl && key.name == 'l') {
+    else if (key && key.ctrl && key.name == 'c') {
       console.log('exit recording');
       process.exit();
     }
   });
   process.stdin.setRawMode(true);
 }
-exportAud();
-module.exports = {transcript,transcriptCalculated};
+//exportAud();
+module.exports = {exportAud, setResult, result,transcriptCalculated};
+
 
