@@ -1,10 +1,12 @@
-const dialogflow = require('@google-cloud/dialogflow');
-const { v4: uuidv4 } = require('uuid');
-// dialogflow documentation https://github.com/googleapis/nodejs-dialogflow
+const drinks = ['sunset cooler', 'orange blast', 'cherry bomb'];
 
 class DialogComponent {
   constructor() {
     // WTF goes here???
+  }
+  checkForDrink(txt) {
+    console.log('we should check for a drink', txt);
+    // How do we check if the txt matches one of our `drinks`?
   }
 }
 

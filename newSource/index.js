@@ -1,14 +1,20 @@
 const { SpeechComponent } = require('./speech');
 const { DialogComponent } = require('./dialog');
+// Create new speech and dialog instances...
+const Speech = new SpeechComponent();
+const Dialog = new DialogComponent();
 
-const speech = new SpeechComponent();
-speech.startRecording();
+// Example of speech
+Speech.startRecording();
 setTimeout(() => {
-  speech.stopRecording();
-  console.log(`FIRST RECORDING: ${speech.getResult()}`);
-  speech.startRecording();
+  Speech.stopRecording();
+  console.log(`FIRST RECORDING: ${Speech.getResult()}`);
+  Speech.startRecording();
   setTimeout(() => {
-    speech.stopRecording();
-    console.log(`SECOND RECORDING: ${speech.getResult()}`);
+    Speech.stopRecording();
+    console.log(`SECOND RECORDING: ${Speech.getResult()}`);
   }, 5000);
 }, 5000);
+
+// Example of dialog
+Dialog.checkForDrink('Example text we would want to check...');
