@@ -2,10 +2,15 @@ const fs = require('fs');
 const util = require('util');
 const {Transform, pipeline} = require('stream');
 const {struct} = require('pb-util');
+const { v4: uuidv4 } = require('uuid');
 
-const file = fs.createWriteStream('./test.wav', { encoding: 'binary' })
 
-file; 
+const path = require('path');
+process.env['GOOGLE_APPLICATION_CREDENTIALS'] = path.join(
+    process.cwd(),
+    'giz-mocktail.json'
+  )  
+
 
 const pump = util.promisify(pipeline);
 // Imports the Dialogflow library
@@ -15,22 +20,20 @@ const dialogflow = require('@google-cloud/dialogflow');
 const sessionClient = new dialogflow.SessionsClient();
 
 // The path to the local file on which to perform speech recognition, e.g.
-const filename = './test.wav';
+// /path/to/audio.raw const 
+var filename = './record.wav';
 
 // The encoding of the audio file, e.g. 'AUDIO_ENCODING_LINEAR_16'
-const encoding = 'AUDIO_ENCODING_LINEAR_16';
+ const encoding = 'AUDIO_ENCODING_LINEAR_16';
 
 // The sample rate of the audio file in hertz, e.g. 16000
 const sampleRateHertz = 16000;
-
-const projectId = 'localsdk3';
-
-const { v4: uuidv4 } = require('uuid');
-
+const projectId = 'localsdk3'
 const sessionId = uuidv4();
 
 // The BCP-47 language code to use, e.g. 'en-US'
 const languageCode = 'en-US';
+
 const sessionPath = sessionClient.projectAgentSessionPath(
   projectId,
   sessionId
@@ -48,7 +51,6 @@ const initialStreamRequest = {
 };
 
 async function run(){
-
 // Create a stream for the streaming request.
 const detectStream = sessionClient
   .streamingDetectIntent()

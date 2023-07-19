@@ -13,7 +13,7 @@ readline.emitKeypressEvents(process.stdin);
 const path = require('path');
 process.env['GOOGLE_APPLICATION_CREDENTIALS'] = path.join(
   process.cwd(),
-  'localsdk3-b447e60b51d1.json'
+  'giz-mocktail.json'
 )
 
 //↓↓↓↓↓↓↓↓↓↓↓ dialogflow query
@@ -151,7 +151,7 @@ app.post("/webhook",(request,response) =>{
       agent.add('alright, one ${drink}');
   }
   function isThisCorrect(agent){
-      agent.add("you said one &drink, is this correct?")
+      agent.add("you said one : ${intentResponse.query}, is this correct?")
   }
 
   var intents = new Map();
