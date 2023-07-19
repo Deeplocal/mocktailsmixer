@@ -1,4 +1,8 @@
-const drinks = ['sunset cooler', 'orange blast', 'cherry bomb'];
+const drinks = [
+  { name: 'sunset cooler', ingredients: [] },
+  { name: 'orange blast', ingredients: [] },
+  { name: 'cherry bomb', ingredients: [] }
+];
 
 class DialogComponent {
   constructor() {
