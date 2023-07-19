@@ -29,22 +29,23 @@ const sessionId = uuidv4(); // ⇨ '1b9d6bcd-bbfd-4b2d-9b5d-ab8dfbbd4bed'
 
 //incoming transcript from 
 //var {transcript,transcriptCalculated} = require('./speech1');
-const speech = require('./speech1');
-var transcript = speech.result;
-var transcriptCalculated = speech.transcriptCalculated;
+const {SpeechResult} = require('./speech1');
+const speech = new SpeechResult();
+var transcript = speech.getResult();
+
 
 // console.log("line35");
 
-console.log('before export',speech.result);
-speech.exportAud();
-console.log('after export',speech.result);
-speech.setResult("help me aaaa");
-console.log('after set',speech.result);
+console.log('before export',speech.getResult());
+speech.listen();
+console.log('after export',speech.getResult());
+speech.result ="test"
+console.log('after set',speech.getResult());
 
 // queries: A set of sequential queries to be send to Dialogflow agent for Intent Detection
 
 const queries = [
-  transcript
+  speech.getResult()
 ]
 
 
@@ -61,8 +62,9 @@ async function detectIntent(
   contexts,
   languageCode
 ) {
+  console.log(speech.getResult());
 
-  if (transcriptCalculated = false) {
+  if (!speech.getTranscriptCalculated()) {
     console.log('Transcript not yet calculated. Waiting for transcript calculation...');
     return; // Exit the function if transcript is not yet calculated
   }
@@ -101,7 +103,7 @@ async function detectIntent(
 //webhook fulfullment text
 async function executeQueries(projectId, sessionId, queries, languageCode) {
   // Keeping the context across queries let's us simulate an ongoing conversation with the bot
-  if (!transcriptCalculated) {
+  if (!speech.getTranscriptCalculated()) {
     console.log('Transcript not yet calculated. Waiting for transcript calculation...');
     return; // Exit the function if transcript is not yet calculated
   }
@@ -172,13 +174,13 @@ app.get("/",(req,res)=> {
 app.listen(port, async () => {
   console.log("server is listening on port: ", port);
 
-  if (transcriptCalculated = true) {
+  if (speech.getTranscriptCalculated()) {
     console.log('app.listen')
     console.log(speech.result)
     try {
-      await executeQueries(projectId, sessionId, [transcript], languageCode);
+      await executeQueries(projectId, sessionId, [speech.getResult()], languageCode);
       // Reset transcriptCalculated to false after executing queries
-      transcriptCalculated = false;
+      speech.setTranscriptCalculated(false);
 
     } catch (error) {
       console.log(error);
