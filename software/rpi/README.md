@@ -15,11 +15,11 @@
 
 - Have the detected word trigger one of 3 messages to be sent over serial. 
 
-- Hand off to integration for Arduino code
+- Hand-off to integration for Arduino code
 
 ### Todos (in steps)
 
-1. gcloud permissions or key management with service account
+1. gcloud permissions or key management with a service account
 
 1. Speech to Text over node-record-lpcm-16 library. 
 
