@@ -27,5 +27,5 @@
 1. Separate one 'keyword' from 'transcript', and check if it is one of the 3 flavors in 'dialog'
 
 1. If one of the words in the transcript is a flavor name, send a message over serial to the Arduino mini to make one of the three drinks.
-    - [serialport]('https://serialport.io/docs/guide-installation#raspberry-pi-linux')
+    - [serialport](https://serialport.io/docs/guide-installation#raspberry-pi-linux)
 
