@@ -12,7 +12,16 @@ process.env['GOOGLE_APPLICATION_CREDENTIALS'] = path.join(
   process.cwd(),
   'giz-cocktail-mocktail.json'
 )
-// keyWord [mechanical, lavender, mud, mango, gimlet];
+function processTranscript(transcript){
+  let keyWords = ['mechanical', 'lavender', 'mud', 'mango', 'gimlet'];
+  for (let kw in keyWords){
+    if (transcript.includes(kw))
+      return kw
+  }
+  return "nodrink"
+}
+
+
 let transcript = '';
 let word = false;
 
@@ -28,12 +37,14 @@ setTimeout(() => {
   word = transcript.includes("mango");
   console.log(`FIRST RECORDING: ${transcript}`);
   console.log(`${word}`);
+  console.log(processTranscript(transcript))
   Speech.startRecording();
   setTimeout(() => {
     Speech.stopRecording();
     console.log(`SECOND RECORDING: ${Speech.getResult()}`);
   }, 20000);
 }, 20000);
+
 
 // console.log(`The word "${word}" ${sentence.includes(word) ? 'is' : 'is not'} in the sentence`)
 
