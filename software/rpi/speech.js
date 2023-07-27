@@ -2,6 +2,8 @@ const recorder = require('node-record-lpcm16');
 const speech = require('@google-cloud/speech');
 const sampleRateHertz = 16000;
 
+
+
 class SpeechComponent {
   constructor() {
     this.client = new speech.SpeechClient();
@@ -18,7 +20,7 @@ class SpeechComponent {
         threshold: 1,
         verbose: false,
         recorder: process.platform === 'darwin' ? 'rec' : 'sox',
-        endOnSilence: true,
+        endOnSilence: false,
         silence: '10.0'
       });
       this.recognizeStream = this.client
@@ -28,18 +30,18 @@ class SpeechComponent {
             sampleRateHertz: sampleRateHertz,
             languageCode: 'en-US'
           },
-          interimResults: true // If you want interim results, set this to true
+          interimResults: false // If you want interim results, set this to true
         })
         .on('error', console.error)
         .on('data', (data) => {
           if (data.results[0] && data.results[0].alternatives[0]) {
-            this.transcript = data.results[0].alternatives[0].transcript;
+            this.transcript = this.transcript.concat(data.results[0].alternatives[0].transcript);
           } else {
             console.log('No transcript available.');
           }
         })
         .on('end', (data) => {
-          // ???
+        
         });
       this.recording
         .stream()
