@@ -10,7 +10,7 @@ const client = new textToSpeech.TextToSpeechClient();
 
 process.env['GOOGLE_APPLICATION_CREDENTIALS'] = path.join(
   process.cwd(),
-  'giz-cocktail-mocktail.json'
+  'secretkey.json'
 )
 function processTranscript(transcript){
   let keyWords = ['mechanical', 'lavender', 'mud', 'mango', 'gimlet'];
