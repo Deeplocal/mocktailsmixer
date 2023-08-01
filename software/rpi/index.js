@@ -13,7 +13,7 @@ process.env['GOOGLE_APPLICATION_CREDENTIALS'] = path.join(
   'secretkey.json'
 )
 function processTranscript(transcript){
-  let keyWords = ['mechanical', 'lavender', 'mud', 'mango', 'gimlet'];
+  let keyWords = ['mechanical', 'lavender', 'mud', 'mango', 'strawberry'];
   for (let kw in keyWords){
     if (transcript.includes(kw))
       return kw
@@ -71,6 +71,79 @@ async function convertTextToMp3(){
 }
 
 convertTextToMp3()
+
+
+// keyword to arduino command
+
+//put this into function
+
+function keyWordToArduino (keywords) {
+
+  setTimeout(() => {
+
+
+  if (transcript.includes('mango')) {
+    setTimeout(() => {
+      setTimeout(() => {
+        return port.write("b0r!", "b0l!" )
+        }, 23000);
+        
+    return port.write("b7r!", "b7l!") 
+  }, 23000);
+ 
+  }
+  
+
+
+  else if(transcript.includes('mechanical')){
+    setTimeout(() => {
+      return port.write("b1r!", "b1l!", "b5r!", "b5l!" )
+    }, 23000);
+  }
+
+
+  else if(transcript.includes('mud')){
+    setTimeout(() => {
+      return port.write("b2r!", "b2l!", "b3r!", "b3l!" )
+  }, 23000);
+    
+  }
+
+  else if(transcript.includes('lavender')){
+    setTimeout(() => {
+      return port.write("b1r!", "b1l!", "b6r!", "b6l!" )
+  }, 23000);
+    
+  }
+
+  else if(transcript.includes('strawberry')){
+    setTimeout(() => {
+      return port.write("b0r!", "b0l!", "b4r!", "b4l!" )
+  }, 23000);
+    
+  }
+
+  else{ 
+    
+      return ("Error, try again.")};
+
+
+},23000) 
+}
+
+
+// if (transcript.includes('mango')) {
+
+  
+//   "b0r!", "b0l!"
+
+//   console.log('1+1')
+
+  
+
+
+//}
+
 
 // check for keywords
 // parameters : str (the text to search for key words

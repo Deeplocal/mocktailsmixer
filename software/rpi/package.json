@@ -12,6 +12,7 @@
   "dependencies": {
     "@google-cloud/dialogflow": "^5.9.0",
     "@google-cloud/speech": "^5.6.0",
+    "@google-cloud/text-to-speech": "^4.2.3",
     "dotenv": "^16.3.1",
     "node-record-lpcm16": "^1.0.1",
     "nodemon": "^3.0.1",

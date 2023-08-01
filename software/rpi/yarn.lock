@@ -51,6 +51,13 @@
     stream-events "^1.0.4"
     uuid "^9.0.0"
 
+"@google-cloud/text-to-speech@^4.2.3":
+  version "4.2.3"
+  resolved "https://registry.npmjs.org/@google-cloud/text-to-speech/-/text-to-speech-4.2.3.tgz"
+  integrity sha512-Ip4g2i9OsKDvD7tfVbgiKXAyzhJ5Sb40BL2h2MzYXjMa37x3sSQdw0a9z7XJKYTTYTfqJV++qgCAwR4UxC4qaA==
+  dependencies:
+    google-gax "^3.5.8"
+
 "@grpc/grpc-js@~1.8.0":
   version "1.8.18"
   resolved "https://registry.npmjs.org/@grpc/grpc-js/-/grpc-js-1.8.18.tgz"

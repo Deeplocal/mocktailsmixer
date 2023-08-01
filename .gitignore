@@ -1,3 +1,4 @@
 .DS_Store
 node_modules/
 giz-mocktail.json
+secretkey.json
