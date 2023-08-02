@@ -1,12 +1,24 @@
 const { SpeechComponent } = require('./speech');
 const { DialogComponent } = require('./dialog');
 const path = require('path');
-// const { SerialPort } = require('serialport')
+const { SerialPort } = require('serialport')
+
+
+const port = new SerialPort(
+  { path: 'COM3', baudRate: 9600 },
+  function (err) {
+      if (err) {
+          return console.log('Error: ', err.message);
+      }
+  }
+);
 
 const textToSpeech = require('@google-cloud/text-to-speech');
 const fs = require('fs');
 const util = require('util');
 const client = new textToSpeech.TextToSpeechClient();
+
+let keyword;
 
 process.env['GOOGLE_APPLICATION_CREDENTIALS'] = path.join(
   process.cwd(),
@@ -37,7 +49,8 @@ setTimeout(() => {
   word = transcript.includes("mango");
   console.log(`FIRST RECORDING: ${transcript}`);
   console.log(`${word}`);
-  console.log(processTranscript(transcript))
+  keyword = processTranscript(transcript);
+  keyWordToArduino(keyword);
   Speech.startRecording();
   setTimeout(() => {
     Speech.stopRecording();
@@ -73,62 +86,94 @@ async function convertTextToMp3(){
 convertTextToMp3()
 
 
-// keyword to arduino command
+// -------------keyword to arduino command---------
 
-//put this into function
+// [*] put this into function
 
-function keyWordToArduino (keywords) {
+// [*] put if (keyword.includes) for each
+// [*] no return needed
 
-  setTimeout(() => {
+//port.write (b0r! = turn on, b7r!= turn on) order of operations = turn on ->wait 23 seconds -> then turn off
 
+// [*] port write only takes one argument
 
-  if (transcript.includes('mango')) {
-    setTimeout(() => {
-      setTimeout(() => {
-        return port.write("b0r!", "b0l!" )
-        }, 23000);
-        
-    return port.write("b7r!", "b7l!") 
-  }, 23000);
- 
-  }
-  
+// [*] each port write need its own set timeout
+
+// can console log port.write(b0r!) to port.write(console log) to test
+// bottle zero port one pump everything hooked up like it would be power, comm
+//define port
+
+//call function keyto arduino after everytime you see process transcript
 
 
-  else if(transcript.includes('mechanical')){
-    setTimeout(() => {
-      return port.write("b1r!", "b1l!", "b5r!", "b5l!" )
-    }, 23000);
-  }
+//let keyword = process.transcript()
+
+//button
 
 
-  else if(transcript.includes('mud')){
-    setTimeout(() => {
-      return port.write("b2r!", "b2l!", "b3r!", "b3l!" )
-  }, 23000);
+function keyWordToArduino (keyword) {
+
+  if (keyword.includes('mango')) {
     
+    port.write("b0r!");
+    setTimeout(() => {
+     port.write("b0l!")}, 23000);
+
+     port.write("b7r!");
+     setTimeout(() => {
+      port.write("b7l!")}, 23000);
   }
 
-  else if(transcript.includes('lavender')){
-    setTimeout(() => {
-      return port.write("b1r!", "b1l!", "b6r!", "b6l!" )
-  }, 23000);
+  else if(keyword.includes('mechanical')){
     
+    port.write("b1r!");
+    setTimeout(() => {
+     port.write("b1l!")}, 23000);
+
+     port.write("b5r!");
+     setTimeout(() => {
+      port.write("b5l!")}, 23000);
   }
 
-  else if(transcript.includes('strawberry')){
+  else if(keyword.includes('mud')){
+
+    port.write("b2r!");
     setTimeout(() => {
-      return port.write("b0r!", "b0l!", "b4r!", "b4l!" )
-  }, 23000);
-    
+     port.write("b2l!")}, 23000);
+
+     port.write("b3r!");
+     setTimeout(() => {
+      port.write("b3l!")}, 23000);
+  }
+
+  else if(keyword.includes('lavender')){
+
+    port.write("b1r!");
+    setTimeout(() => {
+     port.write("b1l!")}, 23000);
+
+     port.write("b6r!");
+     setTimeout(() => {
+      port.write("b6l!")}, 23000);
+  }
+
+  else if(keyword.includes('strawberry')){
+
+    port.write("b0r!");
+    setTimeout(() => {
+     port.write("b0l!")}, 23000);
+
+     port.write("b4r!");
+     setTimeout(() => {
+      port.write("b4l!")}, 23000);
   }
 
   else{ 
     
-      return ("Error, try again.")};
+       ("Error, try again.")};
 
 
-},23000) 
+
 }
 
 
