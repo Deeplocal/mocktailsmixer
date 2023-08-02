@@ -16,6 +16,7 @@
     "dotenv": "^16.3.1",
     "node-record-lpcm16": "^1.0.1",
     "nodemon": "^3.0.1",
+    "serialport": "^11.0.1",
     "sox": "^0.1.0",
     "uuid": "^9.0.0"
   },
