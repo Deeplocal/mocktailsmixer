@@ -5,13 +5,16 @@ const { SerialPort } = require('serialport')
 
 
 const port = new SerialPort(
-  { path: 'COM5', baudRate: 9600 },
+  { path: '/dev/ttyACM0', baudRate: 9600 },
   function (err) {
       if (err) {
           return console.log('Error: ', err.message);
       }
   }
 );
+
+
+
 
 const textToSpeech = require('@google-cloud/text-to-speech');
 const fs = require('fs');
@@ -46,21 +49,40 @@ const Speech = new SpeechComponent();
 const Dialog = new DialogComponent();
 
 // Example of speech
-Speech.startRecording();
-setTimeout(() => {
-  Speech.stopRecording();
-  transcript = Speech.getResult();
-  word = transcript.includes("mango");
-  console.log(`FIRST RECORDING: ${transcript}`);
-  console.log(`${word}`);
-  keyword = processTranscript(transcript);
-  keyWordToArduino(keyword);
- 
-}, 10000);
+function buttonCallback(data) {
 
+  console.log("Serial recieved: ", data.toString());
+  if (data.toString().startsWith("button")) {
+    Speech.startRecording();
+    setTimeout(() => {
+      Speech.stopRecording();
+      transcript = Speech.getResult();
+      console.log(transcript);
+      word = transcript.includes("mango");
+      console.log(`FIRST RECORDING: ${transcript}`);
+      console.log(`${word}`);
+      keyword = processTranscript(transcript);
+      keyWordToArduino(keyword);
+    }, 10000);
+  } else {
+    console.log("don't know that one");
+  }
+}
 
+let serialBuffer = "";
+
+function handleSerial(data){
+  console.log("data received: ", data, data.toString());
+  serialBuffer += data.toString();
+  if(serialBuffer.indexOf("\n")!=-1){
+    buttonCallback(serialBuffer.slice(0, serialBuffer.indexOf("\n")));
+    serialBuffer = serialBuffer.slice(serialBuffer.indexOf("\n")+1);
+  }
+}
+
+port.on('data', handleSerial)
 // console.log(`The word "${word}" ${sentence.includes(word) ? 'is' : 'is not'} in the sentence`)
-
+// buttonCallback()
 
 // Example of dialog
 Dialog.checkForDrink('Example text we would want to check...');

@@ -51,7 +51,7 @@ class SpeechComponent {
   }
   stopRecording() {
     console.log('Stop Recording');
-    this.recording.stop();
+    this.recording?.stop();
     this.recording = null;
     this.recognizeStream.end();
     this.recognizeStream.destroy();
