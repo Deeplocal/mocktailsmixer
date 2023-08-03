@@ -5,7 +5,7 @@ const { SerialPort } = require('serialport')
 
 
 const port = new SerialPort(
-  { path: 'COM5', baudRate: 9600 },
+  { path: 'COM4', baudRate: 9600 },
   function (err) {
       if (err) {
           return console.log('Error: ', err.message);
@@ -46,6 +46,28 @@ const Speech = new SpeechComponent();
 const Dialog = new DialogComponent();
 
 // Example of speech
+
+//should be called when you get an indication that the button is pressed
+
+// event listenter = read rather than wirt
+//when you get a msg from arduino listen.
+
+// maybe look at slack bot for ardunio to send you a msg when button is pressed
+// send somethign back when button gets hit
+
+//talk to jordan 
+
+// move this code to play only when a button is pressed 
+
+// make a call back
+
+// put the following section in a callback so that only when msg from arduino is received 
+// wrap in function- doButton Press and call it when needed
+// need to change com5
+
+parser.on('data', console.log("button"))
+
+
 Speech.startRecording();
 setTimeout(() => {
   Speech.stopRecording();
