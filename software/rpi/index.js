@@ -135,15 +135,15 @@ function keyWordToArduino (keyword) {
     //after one second of b0 being open, open b7
     setTimeout(()=>{
       port.write("b7r!");
-    },100)
+    },1000)
     // after 2.3 seconds of b0 being open, close b0
     setTimeout(() => {
       port.write("b0l!")
       //after one second of b0 close, close b7
       setTimeout(() => {
         port.write("b7l!") 
-      }, 100);
-    }, 21000);
+      }, 1000);
+    }, 2100);
 
   }
 
@@ -161,7 +161,7 @@ function keyWordToArduino (keyword) {
        //after one second of b1 close, close b5
        setTimeout(() => {
          port.write("b5l!") 
-       }, 100);
+       }, 1000);
      }, 2300);
     
   }
@@ -180,8 +180,8 @@ function keyWordToArduino (keyword) {
       //after one second of b2 close, close b3
       setTimeout(() => {
         port.write("b3l!") 
-      }, 100);
-    }, 2300);
+      }, 1000);
+    }, 23000);
 
   
   }
@@ -193,15 +193,15 @@ function keyWordToArduino (keyword) {
     //after one second of b1 being open, open b6
     setTimeout(()=>{
       port.write("b6r!");
-    },100)
+    },1000)
     // after 2.3 seconds of b1 being open, close b1
     setTimeout(() => {
       port.write("b1l!")
       //after one second of b1 close, close b6
       setTimeout(() => {
         port.write("b6l!") 
-      }, 100);
-    }, 2300);
+      }, 1000);
+    }, 23000);
 
   
   }
@@ -220,8 +220,8 @@ function keyWordToArduino (keyword) {
       //after one second of b0 close, close b4
       setTimeout(() => {
         port.write("b4l!") 
-      }, 100);
-    }, 2300);
+      }, 1000);
+    }, 23000);
 
   }
 
