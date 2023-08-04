@@ -143,7 +143,7 @@ function keyWordToArduino (keyword) {
       setTimeout(() => {
         port.write("b7l!") 
       }, 100);
-    }, 2300);
+    }, 21000);
 
   }
 
