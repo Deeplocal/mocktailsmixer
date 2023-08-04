@@ -5,7 +5,7 @@ const { SerialPort } = require('serialport')
 
 
 const port = new SerialPort(
-  { path: 'COM4', baudRate: 9600 },
+  { path: '/dev/ttyACM0', baudRate: 9600 },
   function (err) {
       if (err) {
           return console.log('Error: ', err.message);
@@ -41,50 +41,39 @@ function processTranscript(transcript){
 let transcript = '';
 let word = false;
 
-// Create new speech and dialog instances...
+
 const Speech = new SpeechComponent();
 const Dialog = new DialogComponent();
 
-// Example of speech
-
-//should be called when you get an indication that the button is pressed
-
-// event listenter = read rather than wirt
-//when you get a msg from arduino listen.
-
-// maybe look at slack bot for ardunio to send you a msg when button is pressed
-// send somethign back when button gets hit
-
-//talk to jordan 
-
-// move this code to play only when a button is pressed 
-
-// make a call back
-
-// put the following section in a callback so that only when msg from arduino is received 
-// wrap in function- doButton Press and call it when needed
-// need to change com5
-
-parser.on('data', console.log("button"))
 
 
-Speech.startRecording();
-setTimeout(() => {
-  Speech.stopRecording();
-  transcript = Speech.getResult();
-  word = transcript.includes("mango");
-  console.log(`FIRST RECORDING: ${transcript}`);
-  console.log(`${word}`);
-  keyword = processTranscript(transcript);
-  keyWordToArduino(keyword);
- 
-}, 10000);
+
+function buttonCallback(){
+  Speech.startRecording();
+  setTimeout(() => {
+    Speech.stopRecording();
+    port.write("O!");
+    transcript = Speech.getResult();
+    word = transcript.includes("mango");
+    console.log(`FIRST RECORDING: ${transcript}`);
+    console.log(`${word}`);
+    keyword = processTranscript(transcript);
+    keyWordToArduino(keyword);
+  
+  }, 10000);
+
+}
+let serialBuffer = ''
+function serialParser(data){
+  serialBuffer += data.toString()
+  if (serialBuffer.indexOf('\n')){
+    const command =  serialBuffer.slice(0,serialBuffer.indexOf('\n'))
+  
+  }
+}
+port.on('data', serialParser)
 
 
-// console.log(`The word "${word}" ${sentence.includes(word) ? 'is' : 'is not'} in the sentence`)
-
-
-// Example of dialog
 Dialog.checkForDrink('Example text we would want to check...');
  
 async function convertTextToMp3(){
@@ -108,21 +97,7 @@ async function convertTextToMp3(){
 convertTextToMp3()
 
 
-// -------------keyword to arduino command---------
 
-// [*] put this into function
-
-// [*] put if (keyword.includes) for each
-// [*] no return needed
-
-// [*] port write only takes one argument
-
-// [*] each port write need its own set timeout
-
-//call function keyto arduino after everytime you see process transcript
-//let keyword = process.transcript()
-
-//button
 
 
 function keyWordToArduino (keyword) {
@@ -237,17 +212,6 @@ function keyWordToArduino (keyword) {
   
 
 
-//}
 
-
-// check for keywords
-// parameters : str (the text to search for key words
-// key words (list) a list of keywords to check for )
-// return: correct serial message if keyword detected 
-
- 
-// word = transcript.split()
-
-// key_words = []
 
 

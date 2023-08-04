@@ -31,7 +31,7 @@ class SpeechComponent {
             sampleRateHertz: sampleRateHertz,
             languageCode: 'en-US'
           },
-          interimResults: false // If you want interim results, set this to true
+          interimResults: false 
         })
         .on('error', console.error)
         .on('data', (data) => {
