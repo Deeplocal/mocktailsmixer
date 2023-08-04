@@ -56,6 +56,7 @@ function buttonCallback(data) {
     Speech.startRecording();
     setTimeout(() => {
       Speech.stopRecording();
+      port.write("O!");
       transcript = Speech.getResult();
       console.log(transcript);
       word = transcript.includes("mango");
