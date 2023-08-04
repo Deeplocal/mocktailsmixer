@@ -20,6 +20,7 @@ class SpeechComponent {
         threshold: 1,
         verbose: false,
         recorder: process.platform === 'darwin' ? 'rec' : 'sox',
+
         endOnSilence: false,
         silence: '10.0'
       });
@@ -41,7 +42,7 @@ class SpeechComponent {
           }
         })
         .on('end', (data) => {
-        
+
         });
       this.recording
         .stream()
