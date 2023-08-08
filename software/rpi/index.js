@@ -51,7 +51,7 @@ const Dialog = new DialogComponent();
 // Example of speech
 function buttonCallback(data) {
 
-  console.log("Serial recieved: ", data.toString());
+  
   if (data.toString().startsWith("button")) {
     Speech.startRecording();
     setTimeout(() => {
@@ -76,8 +76,10 @@ function handleSerial(data){
   // console.log("data received: ", data.toString());
   serialBuffer += data.toString();
   if(serialBuffer.indexOf("\n")!=-1){
-    if (serialBuffer.slice(0, serialBuffer.indexOf("\n")).startsWith("button")){
-      buttonCallback(serialBuffer.slice(0, serialBuffer.indexOf("\n")));
+    let sb = serialBuffer.slice(0, serialBuffer.indexOf("\n"));
+    console.log("Serial recieved: ", sb.toString());
+    if (sb.startsWith("button")){
+      buttonCallback(sb);
     }
     serialBuffer = serialBuffer.slice(serialBuffer.indexOf("\n")+1);
   }
