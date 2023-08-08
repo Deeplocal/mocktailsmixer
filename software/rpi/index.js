@@ -80,6 +80,7 @@ function handleSerial(data){
     console.log("Serial recieved: ", sb.toString());
     if (sb.startsWith("button")){
       buttonCallback(sb);
+      port.write("a!\n");
     }
     serialBuffer = serialBuffer.slice(serialBuffer.indexOf("\n")+1);
   }
@@ -129,6 +130,8 @@ convertTextToMp3()
 
 //button
 
+
+//wheneevr you receive a button message send back a msg to ardunio of "a!" to let the arduino knoow that it recieved button msg
 
 function keyWordToArduino (keyword) {
 
