@@ -73,7 +73,7 @@ function buttonCallback(data) {
 let serialBuffer = "";
 
 function handleSerial(data){
-  console.log("data received: ", data, data.toString());
+  // console.log("data received: ", data.toString());
   serialBuffer += data.toString();
   if(serialBuffer.indexOf("\n")!=-1){
     buttonCallback(serialBuffer.slice(0, serialBuffer.indexOf("\n")));
