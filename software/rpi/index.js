@@ -76,7 +76,9 @@ function handleSerial(data){
   // console.log("data received: ", data.toString());
   serialBuffer += data.toString();
   if(serialBuffer.indexOf("\n")!=-1){
-    buttonCallback(serialBuffer.slice(0, serialBuffer.indexOf("\n")));
+    if (serialBuffer.slice(0, serialBuffer.indexOf("\n")).startsWith("button")){
+      buttonCallback(serialBuffer.slice(0, serialBuffer.indexOf("\n")));
+    }
     serialBuffer = serialBuffer.slice(serialBuffer.indexOf("\n")+1);
   }
 }
