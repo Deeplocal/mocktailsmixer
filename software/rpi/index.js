@@ -5,7 +5,7 @@ const { SerialPort } = require('serialport')
 
 
 const port = new SerialPort(
-  { path: '/dev/ttyAML0', baudRate: 9600 },
+  { path: '/dev/ttyACM0', baudRate: 9600 },
   function (err) {
       if (err) {
           return console.log('Error: ', err.message);
