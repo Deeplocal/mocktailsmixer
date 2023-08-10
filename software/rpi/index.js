@@ -53,6 +53,7 @@ function buttonCallback(data) {
 
   //dont need .to string = redundant
   if (data.toString().startsWith("button")) {
+    convertTextToMp3();
     Speech.startRecording();
     setTimeout(() => {
       Speech.stopRecording();
