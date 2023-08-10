@@ -4,6 +4,7 @@ const path = require('path');
 const { SerialPort } = require('serialport')
 
 
+
 const port = new SerialPort(
   { path: '/dev/ttyACM0', baudRate: 9600 },
   function (err) {
@@ -89,7 +90,7 @@ port.on('data', handleSerial)
 Dialog.checkForDrink('Example text we would want to check...');
  
 async function convertTextToMp3(){
-        const text = "Welcome to the Gizmos Mocktail Mixer."
+        const text = "Got it, One Strawberry Lemonade coming up!"
 
         const request = {
           input: {text: text},
@@ -101,7 +102,7 @@ async function convertTextToMp3(){
 
         const writeFile = util.promisify(fs.writeFile)
 
-        await writeFile("output.mp3",response.audioContent,'binary')
+        await writeFile("strawberry.mp3",response.audioContent,'binary')
       
         console.log('text to speech working');
 }
