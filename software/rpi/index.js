@@ -52,8 +52,9 @@ const Dialog = new DialogComponent();
 // Example of speech
 function buttonCallback(data) {
 
-  console.log("Serial recieved: ", data.toString());
+  //dont need .to string = redundant
   if (data.toString().startsWith("button")) {
+    convertTextToMp3();
     Speech.startRecording();
     setTimeout(() => {
       Speech.stopRecording();
@@ -74,10 +75,17 @@ function buttonCallback(data) {
 let serialBuffer = "";
 
 function handleSerial(data){
-  console.log("data received: ", data, data.toString());
+  // console.log("data received: ", data.toString());
   serialBuffer += data.toString();
   if(serialBuffer.indexOf("\n")!=-1){
-    buttonCallback(serialBuffer.slice(0, serialBuffer.indexOf("\n")));
+    let sb = serialBuffer.slice(0, serialBuffer.indexOf("\n"));
+    console.log("Serial recieved: ", sb.toString());
+
+    // if statement redundant
+    if (sb.startsWith("button")){
+      buttonCallback(sb);
+      port.write("a!\n");
+    }
     serialBuffer = serialBuffer.slice(serialBuffer.indexOf("\n")+1);
   }
 }
@@ -110,22 +118,9 @@ async function convertTextToMp3(){
 convertTextToMp3()
 
 
-// -------------keyword to arduino command---------
+// [*] whenever you receive a button message send back a msg to arduino of "a!" to let the arduino know that it recieved button msg
 
-// [*] put this into function
-
-// [*] put if (keyword.includes) for each
-// [*] no return needed
-
-// [*] port write only takes one argument
-
-// [*] each port write need its own set timeout
-
-//call function keyto arduino after everytime you see process transcript
-//let keyword = process.transcript()
-
-//button
-
+// update length in time based on drink ratios
 
 function keyWordToArduino (keyword) {
 
@@ -136,16 +131,17 @@ function keyWordToArduino (keyword) {
     //after one second of b0 being open, open b7
     setTimeout(()=>{
       port.write("b7r!\n");
-    },1000)
-    // after 2.3 seconds of b0 being open, close b0
-    setTimeout(() => {
-      port.write("b0l!\n")
-      //after one second of b0 close, close b7
+      //after 44 second of b7 being open, close b7
       setTimeout(() => {
         port.write("b7l!\n") 
-      }, 1000);
-    }, 21000);
+      }, 44000);
+    },1000)
 
+    // after 132 seconds of b0 being open, close b0
+    setTimeout(() => {
+      port.write("b0l!\n")
+    }, 132000);
+      
   }
 
   else if(keyword.includes('mechanical')){
@@ -155,15 +151,15 @@ function keyWordToArduino (keyword) {
      //after one second of b1 being open, open b5
      setTimeout(()=>{
        port.write("b5r!");
-     },100)
-     // after 2.3 seconds of b1 being open, close b1
+     },1000)
+     // after 44 seconds of b1 being open, close b1
      setTimeout(() => {
        port.write("b1l!")
        //after one second of b1 close, close b5
        setTimeout(() => {
          port.write("b5l!") 
        }, 1000);
-     }, 2300);
+     }, 44000);
     
   }
 
@@ -174,15 +170,15 @@ function keyWordToArduino (keyword) {
     //after one second of b2 being open, open b3
     setTimeout(()=>{
       port.write("b3r!");
-    },100)
-    // after 2.3 seconds of b2 being open, close b2
+    },1000)
+    // after 44 seconds of b2 being open, close b2
     setTimeout(() => {
       port.write("b2l!")
       //after one second of b2 close, close b3
       setTimeout(() => {
         port.write("b3l!") 
       }, 1000);
-    }, 23000);
+    }, 44000);
 
   
   }
@@ -204,33 +200,24 @@ function keyWordToArduino (keyword) {
       }, 1000);
     }, 23000);
 
-  
+
   }
 
   else if(keyword.includes('strawberry')){
 
-    //open b0
-    port.write("b0r!");
-    //after one second of b0 being open, open b4
+    //open b4
+    port.write("b4r!");
+    
+    //after 176 seconds close b4
     setTimeout(()=>{
-      port.write("b4r!");
-    },100)
-    // after 2.3 seconds of b0 being open, close b0
-    setTimeout(() => {
-      port.write("b0l!")
-      //after one second of b0 close, close b4
-      setTimeout(() => {
-        port.write("b4l!") 
-      }, 1000);
-    }, 23000);
-
+      port.write("b4l!") 
+      
+    },176000)
   }
 
   else{ 
     
        ("Error, try again.")};
-
-
 
 }
 
