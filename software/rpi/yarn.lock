@@ -627,6 +627,11 @@ fill-range@^7.0.1:
   dependencies:
     to-regex-range "^5.0.1"
 
+find-exec@1.0.2:
+  version "1.0.2"
+  resolved "https://registry.npmjs.org/find-exec/-/find-exec-1.0.2.tgz"
+  integrity sha512-/cs763F5i7Nm/aG+hjBv2nJB/Bl2w0tnuZd5bbfcV+WYapn8T4ez3B87H6MgvsmdheDkitj/rHi557wvE+XylQ==
+
 fs.realpath@^1.0.0:
   version "1.0.0"
   resolved "https://registry.npmjs.org/fs.realpath/-/fs.realpath-1.0.0.tgz"
@@ -1077,6 +1082,13 @@ picomatch@^2.0.4, picomatch@^2.2.1:
   version "2.3.1"
   resolved "https://registry.npmjs.org/picomatch/-/picomatch-2.3.1.tgz"
   integrity sha512-JU3teHTNjmE2VCGFzuY8EXzCDVwEqB2a8fsIvwaStHhAWJEeVd1o1QD80CU6+ZdEXXSLbSsuLwJjkCBWqRQUVA==
+
+play-sound@^1.1.5:
+  version "1.1.5"
+  resolved "https://registry.npmjs.org/play-sound/-/play-sound-1.1.5.tgz"
+  integrity sha512-gbdF1iLNyL5r9Ne9YwARGMkrvfR4EL9G1ZLtFPLkI2tQt0kkHw5CHM5E6Gl/lDuuk/Uj/O5Q29Bi08jMK4egbA==
+  dependencies:
+    find-exec "1.0.2"
 
 prelude-ls@~1.1.2:
   version "1.1.2"
