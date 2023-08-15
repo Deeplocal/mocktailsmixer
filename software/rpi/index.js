@@ -124,7 +124,9 @@ function keyWordToArduino(keyword) {
     //test open b0
 
     port.write("b0r!\n");
-    port.write("b0l!\n");
+    setTimeout(() => {
+      port.write("b0l!\n");
+    }, 2000);
 
 
     //   //open b0
