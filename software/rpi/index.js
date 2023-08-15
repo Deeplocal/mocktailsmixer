@@ -122,19 +122,19 @@ function keyWordToArduino(keyword) {
   if (keyword.includes('mango')) {
 
     //open b0
-    port.write("b7r!\n");
+    port.write("b0r!\n");
     //after one second of b0 being open, open b7
     setTimeout(() => {
-      port.write("b0r!\n");
+      port.write("b7r!\n");
       //after 44 second of b7 being open, close b7
       setTimeout(() => {
-        port.write("b0l!\n")
+        port.write("b7l!\n")
       }, 44000);
     }, 1000)
 
     // after 132 seconds of b0 being open, close b0
     setTimeout(() => {
-      port.write("b7l!\n")
+      port.write("b0l!\n")
     }, 132000);
 
   }
@@ -142,17 +142,17 @@ function keyWordToArduino(keyword) {
   else if (keyword.includes('mechanical')) {
     //
     //open b1
-    port.write("b1r!");
+    port.write("b1r!\n");
     //after one second of b1 being open, open b5
     setTimeout(() => {
-      port.write("b5r!");
+      port.write("b5r!\n");
     }, 1000)
     // after 44 seconds of b1 being open, close b1
     setTimeout(() => {
-      port.write("b1l!")
+      port.write("b1l!\n")
       //after one second of b1 close, close b5
       setTimeout(() => {
-        port.write("b5l!")
+        port.write("b5l!\n")
       }, 1000);
     }, 44000);
 
@@ -161,17 +161,17 @@ function keyWordToArduino(keyword) {
   else if (keyword.includes('mud')) {
 
     //open b2
-    port.write("b2r!");
+    port.write("b2r!\n");
     //after one second of b2 being open, open b3
     setTimeout(() => {
-      port.write("b3r!");
+      port.write("b3r!\n");
     }, 1000)
     // after 44 seconds of b2 being open, close b2
     setTimeout(() => {
-      port.write("b2l!")
+      port.write("b2l!\n")
       //after one second of b2 close, close b3
       setTimeout(() => {
-        port.write("b3l!")
+        port.write("b3l!\n")
       }, 1000);
     }, 44000);
 
@@ -202,91 +202,91 @@ function keyWordToArduino(keyword) {
   else if (keyword.includes('strawberry')) {
 
     //open b4
-    port.write("b4r!");
+    port.write("b4r!\n");
 
     //after 176 seconds close b4
     setTimeout(() => {
-      port.write("b4l!")
+      port.write("b4l!\n")
 
     }, 176000)
   }
 
   else if (keyword.includes('zero')) {
 
-    port.write('b0r!');
+    port.write('b0r!\n');
 
     setTimeout(() => {
-      port.write('b0l!');
+      port.write('b0l!\n');
 
     }, 2000);
   }
 
   else if (keyword.includes('one')) {
 
-    port.write('b1r!');
+    port.write('b1r!\n');
 
     setTimeout(() => {
-      port.write('b1l!');
+      port.write('b1l!\n');
 
     }, 2000);
   }
 
   else if (keyword.includes('two')) {
 
-    port.write('b2r!');
+    port.write('b2r!\n');
 
     setTimeout(() => {
-      port.write('b2l!');
+      port.write('b2l!\n');
 
     }, 2000);
   }
 
   else if (keyword.includes('three')) {
 
-    port.write('b3r!');
+    port.write('b3r!\n');
 
     setTimeout(() => {
-      port.write('b3l!');
+      port.write('b3l!\n');
 
     }, 2000);
   }
 
   else if (keyword.includes('four')) {
 
-    port.write('b4r!');
+    port.write('b4r!\n');
 
     setTimeout(() => {
-      port.write('b4l!');
+      port.write('b4l!\n');
 
     }, 2000);
   }
 
   else if (keyword.includes('five')) {
 
-    port.write('b5r!');
+    port.write('b5r!\n');
 
     setTimeout(() => {
-      port.write('b5l!');
+      port.write('b5l!\n');
 
     }, 2000);
   }
 
   else if (keyword.includes('six')) {
 
-    port.write('b6r!');
+    port.write('b6r!\n');
 
     setTimeout(() => {
-      port.write('b6l!');
+      port.write('b6l!\n');
 
     }, 2000);
   }
 
   else if (keyword.includes('seven')) {
 
-    port.write('b7r!');
+    port.write('b7r!\n');
 
     setTimeout(() => {
-      port.write('b7l!');
+      port.write('b7l!\n');
 
     }, 2000);
   }
