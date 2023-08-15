@@ -29,7 +29,7 @@ process.env['GOOGLE_APPLICATION_CREDENTIALS'] = path.join(
   'secretkey.json'
 )
 function processTranscript(transcript) {
-  let keyWords = ['mechanical', 'lavender', 'mud', 'mango', 'strawberry'];
+  let keyWords = ['mechanical', 'lavender', 'mud', 'mango', 'strawberry', 'zero', 'one', 'two', 'three', 'four', 'five,', 'six', 'seven'];
   for (let i = 0; i < keyWords.length; i++) {
     let kw = keyWords[i]
     if (transcript.includes(kw))
