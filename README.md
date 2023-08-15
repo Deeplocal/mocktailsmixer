@@ -302,6 +302,8 @@ Once this is done, carefully flip bottle over into one of the bottle holding loc
 
 ## Programming the Mixer
 
+### Step 21: Run Javascript Program
+
 ### Install node packages: 
 ‘Serialport’
 ‘Speech-to-text’
