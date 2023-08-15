@@ -302,90 +302,90 @@ Once this is done, carefully flip bottle over into one of the bottle holding loc
 
 ## Programming the Mixer
 
-![](diagrams/system_diagram.png)
+### Step 21: Run Javascript Program
 
-### Mixer Programming Overview: How do the RPi and Assistant SDK communicate with the pumps?
-- The user presses the physical button to start the Google Assistant and speaks a drink request into the microphone.
-- The local Python application picks up the speech and transmits it to api.ai for processing using the Assistant SDK.
-- The api.ai agent parses the input, determines its context and intent, and processes the request.
-- For a drink request:
-  - The api.ai agent uses a webhook to process the request.
-    - The webhook is an external URL endpoint existing as a Google Cloud Function and written in Node.js.
-    - Requests can also be fulfilled natively on the api.ai platform.
-  - The webhook receives the make_drink intent and specific drink entity from the request, publishes the relevant info over a Pub/Sub route, and returns the response text for the user.
-  - The local Python application receives and parses the Pub/Sub message, calculates how many seconds each relay should be turned on, and transmits those commands to the Arduino via serial.
-  - The Arduino uses its GPIO to control the relays and dispense the drink.
+#### Install node packages: 
+‘Serialport’
 
-### Step 21: Create a Google Cloud Platform Project
-- Create a new project from the [Google Developers Console](https://console.developers.google.com/)
-- Locate your project ID in the dashboard and note for later use. (Read [here](https://support.google.com/cloud/answer/6158840?hl=en) for help)
-- Enable the Pub/Sub API and create a topic named "MocktailsMixerMessages" (Read [here](https://cloud.google.com/pubsub/docs/quickstart-console) for help)
+‘Speech-to-text’
 
-### Step 22: Create Google Cloud Function
-- Clone the repository to your local machine.
-- Update “your-google-project-id” on line 7 of software/gcf/index.js.
-- Create a zip file including only package.json and index.js from the software/gcf/ directory.
-- Navigate to the Cloud Functions Console in a browser.
-- Ensure the correct project is selected in the dropdown at the top of the page.
-- Click “Create Function.”
-- Fill out the form with the following info:
-  - Name: apiai-webhook
-  - Region: (choose region nearest to your location)
-  - Memory allocated: 128 MB
-  - Timeout: 60 seconds
-  - Trigger: HTTP trigger (**Note HTTP trigger URL for later use**)
-  - Source code: ZIP upload
-  - ZIP file: (choose ZIP file created above)
-  - Stage bucket: (choose a bucket)
-  - Function to execute: webhook
-  - Click “Create”
+#### Defining Path and Variables
 
-### Step 23: Set up an [api.ai](https://api.ai/) agent
-Tip: You may want to review the [Actions on Google](https://developers.google.com/actions/) developer guide for an introduction to conversational user interfaces.
-- Sign into the [api.ai console](https://console.api.ai).
-- From the [agents](https://console.api.ai/api-client/#/agents) page, click “Create Agent.”
-- Give your agent a name. Select “Private” and click “Save.”
-- Navigate to the Agent Fulfillment page.
-- Flip the enabled toggle on, enter the HTTP trigger URL from the Google Cloud Function in the URL field, and click “Save.”
-- Navigate to the Agent Settings page.
-- Select the “Export and Import” tab and click the “Import from ZIP” button.
-- Select the ApiAi_MocktailsMixer.zip file from the cloned repository and import.
-- Navigate to the Agent Integrations page:
-  - Flip the “Actions on Google” integration on and fill out the form.
-  - Select “Authorize” and then “Preview.” Note: Previews are only available for a period of time. Use “Deploy” to register your conversation action with Google. The registration process can take one to two weeks. Read more [here](https://docs.api.ai/docs/actions-on-google-integration#previewing-your-conversation-action).
-  - Test your agent on the [Google Home Web Simulator](https://developers.google.com/actions/tools/web-simulator).
-- Create an SD card with Raspbian Jessie with Pixel.
-  - Download the [compressed image](https://www.raspberrypi.org/downloads/raspbian/) and decompress the file. (This should result in YYYY-MM-DD-raspbian-jessie.img)
-  - Insert 8GB+ microSD card into computer.
-  - On a Mac, open Terminal and perform the following:
-    - Find the correct disk using the command `$ diskutil list`. You’re looking for the entire disk i.e. `/dev/diskN`.
-    - Unmount the disk using the command `$ diskutil unmountDisk /dev/diskN`.
-    - Write the image to the disk using the command `$ sudo dd bs=1m if=/path/to/YYYY-MM-DD-raspbian-jessie.img of=/dev/rdiskN`.
-    (Note the additional “r” in the output file path. Be patient - there is no feedback for this command and it can take several minutes. WARNING: `$ sudo dd` is a very powerful command so double-check you have the correct disk.)
-    - When the image has been written, eject the microSD card and insert it into your Raspberry Pi.
-  - For Windows instructions, [see here](https://www.raspberrypi.org/documentation/installation/installing-images/windows.md)
-  - For Linux instructions, [see here](https://www.raspberrypi.org/documentation/installation/installing-images/linux.md)
+Declare port as new Serialport and define the path that will be used.
 
-### Step 24: Follow steps in [Getting Started with the Raspberry Pi and Python.](https://developers.google.com/assistant/sdk/prototype/getting-started-pi-python/)
-- Before section “Connect to the Raspberry Pi via SSH,” you must enable SSH.
-  - On a Mac, perform the following using Terminal:
-    - Change directory to the root of the microSD card: `$ cd /Volumes/boot`
-    - Create an empty SSH file with no extension: `$ touch ssh`
-- In section “Configure a new Python virtual environment”, we used Python 3.
-- Before section “Configure and Test the Audio,” plug in a USB microphone and 3.5mm speaker to your Raspberry Pi.
+Upload JS program to raspberry pi and ssh into pi to initiate the program and to update the code.
 
-### Step 25: Install Additional Raspberry Pi Libraries
-- Change directory: `$ cd /home/pi/`
-- Install RPi.GPIO: `$ env/bin/pip3 install RPi.GPIO`
-- [Install python pubsub](https://cloud.google.com/pubsub/docs/reference/libraries#client-libraries-install-python): `$ env/bin/pip3 install google-cloud-pubsub`
-- Install PySerial: `$ python -m pip install pyserial --upgrade`
-- Install PyAudio: `$ python -m pip install pyaudio`
+Declare a variable called (‘keyword’) and set it as an empty string.
 
-### Step 26: Clone code repository on RPi and move files into correct location
-- Change directory: `$ cd /home/pi/`
-- Clone repository: `$ git clone https://github.com/Deeplocal/mocktailsmixer.git`.
-- Update the PUBSUB_PROJECT_ID in mocktailsmixer/software/rpi/\_\_main\_\_.py
-- Copy files into embedded assistant directory: `$ cp -r mocktailsmixer/software/rpi embedded-assistant-sdk-python/googlesamples/`
+#### Initiating Program
+
+Ssh into Pi with ssh username and password using git bash.
+
+Type command ‘pm2 restart 0’ to refresh the program.
+
+Cd into  ~/src/mocktailsmixer/software/rpi.
+
+Type command ‘pm2 start index.js’ to run the program.
+
+Type command ‘pm2 logs 0’ to view logs and observe what is happening as the program runs.
+
+The user presses the physical button on the assembled Mocktail Mixer which triggers a serial message to be sent from Arduino to the JavaScript application
+
+#### How Arduino sends a message to the JS program a.k.a. Button Press
+
+A function called handleSerial() listens for a complete serial message from the Arduino to know when to parse a command.
+
+Completed serial messages held in the variable ('data') which contains the string “button” is received from the Arduino and will be passed onto the function buttonCallBack().
+
+Within the buttonCallBack() function there is an if statement that has the condition to use the toString() method to transfer data from the arduino into a string, and the startsWith() method to detect if “button” message has been received by the JS program. If found, it begins recording and sets a timeout for processing.
+
+#### Speech to Text
+
+The JavaScript application picks up the serial message through the function processTranscript() which starts streaming the audio from Speech-to-text API  with settimeout incorporated within the function to start/stop the audio recording for 10 seconds > translated to 10000 milliseconds, then the audio is transcribed.
+
+Once the transcript is processed we then loop through an array of keywords that correspond with the drink names we have, i.e [‘mango’, ‘mechanical’, ‘mud’]  and if detected within the transcript we then calculate how many seconds each relay should be turned on and transmit those commands to arduino via serial.
+
+#### How does the JS Program communicate to the arduino?
+
+The buttonCallback() function calls the function keyWordToArduino(‘keyword’)  for 10,000 milliseconds, else it responds with a console.log(“don’t know that one”) 
+
+The keyWordToArduino function has a series of if statements that will open and close the relays of each bottle depending on the correct keyword being detected.
+
+The initial if statement will use the include() method to check if the variable 'keyword' includes a chosen keyword like 'mango' for example.
+When the word 'mango' is detected, the executed code will include the port.write() method to send a string message to the arduino via serial port to open the first relay. Ex: port.write("b0r!\n");
+
+Arduino Serial Commands:
+
+          	b= bottle action
+           
+          	0-7 =index of bottles 
+           
+              r = on
+              
+          	l = off
+           
+            ! = termination
+            
+      a= active interaction
+      
+      o = off
+      
+Each port.write() method must have only one serial command in order to be received by arduino. Ex: to turn on and off relay number one looks like:
+
+ port.write("b0r!\n")
+ 
+ port.write("b0l!\n")
+ 
+
+Once the first relay is open, a timeout is set to open the next relay after 1 second of the first relay being open. If you open the relays simultaneously the arduino will fail to turn either relay on because there are too many commands at one time, the 1 second setTimeOut is to avoid this problem.
+
+After both relays are open, use the setTimeOut function to close the first relay after the number of seconds it takes to pour the proper ratio based on the drink ingredients. Nested within this setTimeOut there should be another setTimeOut that turns off the second relay after 1 second of the first relay being turned off if it is a 1:1 ratio or the proper number of milliseconds that is required based on specific drink ratios. 
+
+For the remaining keywords, else if statements are used that follow the above pattern in the keyWordToArduino function.
+
+An else statement is used to tell the user to try again if no keywords were detected.
+
+Within the handleSerial() function there is a port.write(“a!”) command which communicates to the Arduino that the button press was received by the JS program and it will not allow any new button press commands to be received until the entire program has run and been completed.
 
 ### Step 27: Prepare Arduino
 - Load sketch onto board.
