@@ -211,6 +211,86 @@ function keyWordToArduino(keyword) {
     }, 176000)
   }
 
+  else if (keyword.includes('zero')) {
+
+    port.write('b0r!');
+
+    setTimeout(() => {
+      port.write('b0l!');
+
+    }, 2000);
+  }
+
+  else if (keyword.includes('one')) {
+
+    port.write('b1r!');
+
+    setTimeout(() => {
+      port.write('b1l!');
+
+    }, 2000);
+  }
+
+  else if (keyword.includes('two')) {
+
+    port.write('b2r!');
+
+    setTimeout(() => {
+      port.write('b2l!');
+
+    }, 2000);
+  }
+
+  else if (keyword.includes('three')) {
+
+    port.write('b3r!');
+
+    setTimeout(() => {
+      port.write('b3l!');
+
+    }, 2000);
+  }
+
+  else if (keyword.includes('four')) {
+
+    port.write('b4r!');
+
+    setTimeout(() => {
+      port.write('b4l!');
+
+    }, 2000);
+  }
+
+  else if (keyword.includes('five')) {
+
+    port.write('b5r!');
+
+    setTimeout(() => {
+      port.write('b5l!');
+
+    }, 2000);
+  }
+
+  else if (keyword.includes('six')) {
+
+    port.write('b6r!');
+
+    setTimeout(() => {
+      port.write('b6l!');
+
+    }, 2000);
+  }
+
+  else if (keyword.includes('seven')) {
+
+    port.write('b7r!');
+
+    setTimeout(() => {
+      port.write('b7l!');
+
+    }, 2000);
+  }
+
   else {
 
     ("Error, try again.")
