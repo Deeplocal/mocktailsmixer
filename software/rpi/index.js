@@ -140,7 +140,7 @@ function keyWordToArduino(keyword) {
   }
 
   else if (keyword.includes('mechanical')) {
-
+    //
     //open b1
     port.write("b1r!");
     //after one second of b1 being open, open b5
