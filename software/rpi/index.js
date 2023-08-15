@@ -2,7 +2,7 @@ const { SpeechComponent } = require('./speech');
 const { DialogComponent } = require('./dialog');
 const path = require('path');
 const { SerialPort } = require('serialport')
-
+var player = require('play-sound')(opts = {})
 
 
 const port = new SerialPort(
