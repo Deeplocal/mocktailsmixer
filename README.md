@@ -309,6 +309,8 @@ Once this is done, carefully flip bottle over into one of the bottle holding loc
 
 ‘Speech-to-text’
 
+#### Defining Path and Variables
+
 Declare port as new Serialport and define the path that will be used.
 
 Upload JS program to raspberry pi and ssh into pi to initiate the program and to update the code.
