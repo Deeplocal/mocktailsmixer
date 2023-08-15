@@ -304,8 +304,9 @@ Once this is done, carefully flip bottle over into one of the bottle holding loc
 
 ### Step 21: Run Javascript Program
 
-### Install node packages: 
+#### Install node packages: 
 ‘Serialport’
+
 ‘Speech-to-text’
 
 Declare port as new Serialport and define the path that will be used.
@@ -314,48 +315,74 @@ Upload JS program to raspberry pi and ssh into pi to initiate the program and to
 
 Declare a variable called (‘keyword’) and set it as an empty string.
 
-### Initiating Program
+#### Initiating Program
 
 Ssh into Pi with ssh username and password using git bash.
+
 Type command ‘pm2 restart 0’ to refresh the program.
+
 Cd into  ~/src/mocktailsmixer/software/rpi.
+
 Type command ‘pm2 start index.js’ to run the program.
+
 Type command ‘pm2 logs 0’ to view logs and observe what is happening as the program runs.
+
 The user presses the physical button on the assembled Mocktail Mixer which triggers a serial message to be sent from Arduino to the JavaScript application
 
-### How Arduino sends a message to the JS program a.k.a. Button Press
+#### How Arduino sends a message to the JS program a.k.a. Button Press
 
 A function called handleSerial() listens for a complete serial message from the Arduino to know when to parse a command.
+
 Completed serial messages held in the variable ('data') which contains the string “button” is received from the Arduino and will be passed onto the function buttonCallBack().
+
 Within the buttonCallBack() function there is an if statement that has the condition to use the toString() method to transfer data from the arduino into a string, and the startsWith() method to detect if “button” message has been received by the JS program. If found, it begins recording and sets a timeout for processing.
 
-### Speech to Text
+#### Speech to Text
 
 The JavaScript application picks up the serial message through the function processTranscript() which starts streaming the audio from Speech-to-text API  with settimeout incorporated within the function to start/stop the audio recording for 10 seconds > translated to 10000 milliseconds, then the audio is transcribed.
-Once the transcript is processed we then loop through an array of keywords that correspond with the drink names we have, i.e [‘mango’, ‘mechanical’, ‘mud’]  and if detected within the transcript we then calculate how many seconds each relay should be turned on and transmit those commands to arduino via serial
 
-### How does the JS Program communicate to the arduino?
+Once the transcript is processed we then loop through an array of keywords that correspond with the drink names we have, i.e [‘mango’, ‘mechanical’, ‘mud’]  and if detected within the transcript we then calculate how many seconds each relay should be turned on and transmit those commands to arduino via serial.
 
-The buttonCallback() function calls the function keyWordToArduino(‘keyword’)  for 10,000 milliseconds, else it responds with a console.log(“don’t know that one”)
+#### How does the JS Program communicate to the arduino?
+
+The buttonCallback() function calls the function keyWordToArduino(‘keyword’)  for 10,000 milliseconds, else it responds with a console.log(“don’t know that one”) 
+
 The keyWordToArduino function has a series of if statements that will open and close the relays of each bottle depending on the correct keyword being detected.
+
 The initial if statement will use the include() method to check if the variable 'keyword' includes a chosen keyword like 'mango' for example.
 When the word 'mango' is detected, the executed code will include the port.write() method to send a string message to the arduino via serial port to open the first relay. Ex: port.write("b0r!\n");
+
 Arduino Serial Commands:
+
           	b= bottle action
+           
           	0-7 =index of bottles 
+           
               r = on
+              
           	l = off
+           
             ! = termination
+            
       a= active interaction
+      
       o = off
+      
 Each port.write() method must have only one serial command in order to be received by arduino. Ex: to turn on and off relay number one looks like:
+
  port.write("b0r!\n")
+ 
  port.write("b0l!\n")
+ 
 
 Once the first relay is open, a timeout is set to open the next relay after 1 second of the first relay being open. If you open the relays simultaneously the arduino will fail to turn either relay on because there are too many commands at one time, the 1 second setTimeOut is to avoid this problem.
-After both relays are open, use the setTimeOut function to close the first relay after the number of seconds it takes to pour the proper ratio based on the drink ingredients. N Nested within this setTimeOut there should be another setTimeOut that turns off the second relay after 1 second of the first relay being turned off if it is a 1:1 ratio or the proper number of milliseconds that is required based on specific drink ratios. 
+
+After both relays are open, use the setTimeOut function to close the first relay after the number of seconds it takes to pour the proper ratio based on the drink ingredients. Nested within this setTimeOut there should be another setTimeOut that turns off the second relay after 1 second of the first relay being turned off if it is a 1:1 ratio or the proper number of milliseconds that is required based on specific drink ratios. 
+
 For the remaining keywords, else if statements are used that follow the above pattern in the keyWordToArduino function.
+
 An else statement is used to tell the user to try again if no keywords were detected.
+
 Within the handleSerial() function there is a port.write(“a!”) command which communicates to the Arduino that the button press was received by the JS program and it will not allow any new button press commands to be received until the entire program has run and been completed.
 
 ### Step 27: Prepare Arduino
