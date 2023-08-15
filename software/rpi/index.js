@@ -121,94 +121,100 @@ function keyWordToArduino(keyword) {
 
   if (keyword.includes('mango')) {
 
-    //open b0
+    //test open b0
+
     port.write("b0r!\n");
-    //after one second of b0 being open, open b7
-    setTimeout(() => {
-      port.write("b7r!\n");
-      //after 44 second of b7 being open, close b7
-      setTimeout(() => {
-        port.write("b7l!\n")
-      }, 44000);
-    }, 1000)
-
-    // after 132 seconds of b0 being open, close b0
-    setTimeout(() => {
-      port.write("b0l!\n")
-    }, 132000);
-
-  }
-
-  else if (keyword.includes('mechanical')) {
-
-    //open b1
-    port.write("b1r!");
-    //after one second of b1 being open, open b5
-    setTimeout(() => {
-      port.write("b5r!");
-    }, 1000)
-    // after 44 seconds of b1 being open, close b1
-    setTimeout(() => {
-      port.write("b1l!")
-      //after one second of b1 close, close b5
-      setTimeout(() => {
-        port.write("b5l!")
-      }, 1000);
-    }, 44000);
-
-  }
-
-  else if (keyword.includes('mud')) {
-
-    //open b2
-    port.write("b2r!");
-    //after one second of b2 being open, open b3
-    setTimeout(() => {
-      port.write("b3r!");
-    }, 1000)
-    // after 44 seconds of b2 being open, close b2
-    setTimeout(() => {
-      port.write("b2l!")
-      //after one second of b2 close, close b3
-      setTimeout(() => {
-        port.write("b3l!")
-      }, 1000);
-    }, 44000);
+    port.write("b0l!\n");
 
 
-  }
+    //   //open b0
+    //   port.write("b0r!\n");
+    //   //after one second of b0 being open, open b7
+    //   setTimeout(() => {
+    //     port.write("b7r!\n");
+    //     //after 44 second of b7 being open, close b7
+    //     setTimeout(() => {
+    //       port.write("b7l!\n")
+    //     }, 44000);
+    //   }, 1000)
 
-  else if (keyword.includes('lavender')) {
+    //   // after 132 seconds of b0 being open, close b0
+    //   setTimeout(() => {
+    //     port.write("b0l!\n")
+    //   }, 132000);
 
-    //open b1
-    port.write("b1r!\n");
-    //after one second of b1 being open, open b6
-    setTimeout(() => {
-      port.write("br!\n");
-      //after 12 second of b6 being open, close b6
-      setTimeout(() => {
-        port.write("b6l!\n")
-      }, 44000);
-    }, 1000)
+    // }
 
-    // after 165 seconds of b1 being open, close b1
-    setTimeout(() => {
-      port.write("b0l!\n")
-    }, 132000);
+    // else if (keyword.includes('mechanical')) {
+
+    //   //open b1
+    //   port.write("b1r!");
+    //   //after one second of b1 being open, open b5
+    //   setTimeout(() => {
+    //     port.write("b5r!");
+    //   }, 1000)
+    //   // after 44 seconds of b1 being open, close b1
+    //   setTimeout(() => {
+    //     port.write("b1l!")
+    //     //after one second of b1 close, close b5
+    //     setTimeout(() => {
+    //       port.write("b5l!")
+    //     }, 1000);
+    //   }, 44000);
+
+    // }
+
+    // else if (keyword.includes('mud')) {
+
+    //   //open b2
+    //   port.write("b2r!");
+    //   //after one second of b2 being open, open b3
+    //   setTimeout(() => {
+    //     port.write("b3r!");
+    //   }, 1000)
+    //   // after 44 seconds of b2 being open, close b2
+    //   setTimeout(() => {
+    //     port.write("b2l!")
+    //     //after one second of b2 close, close b3
+    //     setTimeout(() => {
+    //       port.write("b3l!")
+    //     }, 1000);
+    //   }, 44000);
 
 
-  }
+    // }
 
-  else if (keyword.includes('strawberry')) {
+    // else if (keyword.includes('lavender')) {
 
-    //open b4
-    port.write("b4r!");
+    //   //open b1
+    //   port.write("b1r!\n");
+    //   //after one second of b1 being open, open b6
+    //   setTimeout(() => {
+    //     port.write("br!\n");
+    //     //after 12 second of b6 being open, close b6
+    //     setTimeout(() => {
+    //       port.write("b6l!\n")
+    //     }, 44000);
+    //   }, 1000)
 
-    //after 176 seconds close b4
-    setTimeout(() => {
-      port.write("b4l!")
+    //   // after 165 seconds of b1 being open, close b1
+    //   setTimeout(() => {
+    //     port.write("b0l!\n")
+    //   }, 132000);
 
-    }, 176000)
+
+    // }
+
+    // else if (keyword.includes('strawberry')) {
+
+    //   //open b4
+    //   port.write("b4r!");
+
+    //   //after 176 seconds close b4
+    //   setTimeout(() => {
+    //     port.write("b4l!")
+
+    //   }, 176000)
   }
 
   else {
