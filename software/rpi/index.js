@@ -123,19 +123,19 @@ function keyWordToArduino(keyword) {
   if (keyword.includes('mango')) {
 
     //open b0
-    port.write("b0r!\n");
+    port.write("b7r!\n");
     //after one second of b0 being open, open b7
     setTimeout(() => {
-      port.write("b7r!\n");
+      port.write("b0r!\n");
       //after 44 second of b7 being open, close b7
       setTimeout(() => {
-        port.write("b7l!\n")
+        port.write("b0l!\n")
       }, 44000);
     }, 1000)
 
     // after 132 seconds of b0 being open, close b0
     setTimeout(() => {
-      port.write("b0l!\n")
+      port.write("b7l!\n")
     }, 132000);
 
   }
