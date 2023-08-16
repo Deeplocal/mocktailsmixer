@@ -143,7 +143,7 @@ function keyWordToArduino(keyword) {
 
       // after 132 seconds of b0 being open, close b0
 
-    }, 2000)
+    }, 3000)
 
 
   }
@@ -165,7 +165,7 @@ function keyWordToArduino(keyword) {
           port.write("b5l!\n")
         }, 1000);
       }, 44000);
-    }, 2000)
+    }, 3000)
   }
 
   else if (keyword.includes('mud')) {
@@ -186,7 +186,7 @@ function keyWordToArduino(keyword) {
         }, 1000);
       }, 44000);
 
-    }, 2000)
+    }, 3000)
   }
 
   else if (keyword.includes('lavender')) {
@@ -208,7 +208,7 @@ function keyWordToArduino(keyword) {
         port.write("b0l!\n")
       }, 132000);
 
-    }, 2000)
+    }, 3000)
   }
 
   else if (keyword.includes('strawberry')) {
@@ -222,7 +222,7 @@ function keyWordToArduino(keyword) {
         port.write("b4l!\n")
 
       }, 176000)
-    }, 2000)
+    }, 3000)
   }
 
   else if (keyword.includes('zero')) {
