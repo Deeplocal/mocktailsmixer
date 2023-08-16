@@ -58,7 +58,7 @@ function buttonCallback(data) {
     Speech.startRecording();
     setTimeout(() => {
       Speech.stopRecording();
-
+      port.write("o!\n");
       transcript = Speech.getResult();
       console.log(transcript);
       word = transcript.includes("mango");
@@ -138,11 +138,6 @@ function keyWordToArduino(keyword) {
         setTimeout(() => {
           console.log("b0 off")
           port.write("b0l!\n")
-
-          setTimeout(() => {
-            port.write("o!\n");
-
-          }, 1000)
         }, 13000);
       }, 1000)
 
@@ -237,9 +232,6 @@ function keyWordToArduino(keyword) {
     setTimeout(() => {
       port.write("b0l!\n");
 
-      setTimeout(() => {
-        port.write("o!\n")
-      }, 10000);
     }, 10000);
   }
 
