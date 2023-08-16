@@ -135,13 +135,14 @@ function keyWordToArduino(keyword) {
           console.log("b7 off")
           port.write("b7l!\n")
         }, 4000);
+        setTimeout(() => {
+          console.log("b0 off")
+          port.write("b0l!\n")
+        }, 13000);
       }, 1000)
 
       // after 132 seconds of b0 being open, close b0
-      setTimeout(() => {
-        console.log("b0 off")
-        port.write("b0l!\n")
-      }, 13000);
+
     }, 2000)
 
 
