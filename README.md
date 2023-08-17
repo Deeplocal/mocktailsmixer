@@ -169,14 +169,14 @@ Similarly to the 5V power, connect the Ground wires to the GND terminals on the 
 Next, connect the control lines from the CTRL terminal on their respective pins on the Arduino. To make connecting the control lines to the Arduino easier, we waited until they were all plugged in before we mounted the Arduino; this way we could still read the pin locations on the back or reset the Arduino if necessary.
 
 The pin-outs for the Arduino are:
-- Pump 1 Relay to Pin 2
-- Pump 2 Relay to Pin 3
-- Pump 3 Relay to Pin 4
-- Pump 4 Relay to Pin 5
-- Pump 5 Relay to Pin 7
-- Pump 6 Relay to Pin 8
-- Pump 7 Relay to Pin 9
-- Pump 8 Relay to Pin 10
+- Pump 1 Relay to Pin 3
+- Pump 2 Relay to Pin 4
+- Pump 3 Relay to Pin 5
+- Pump 4 Relay to Pin 7
+- Pump 5 Relay to Pin 8
+- Pump 6 Relay to Pin 9
+- Pump 7 Relay to Pin 10
+- Pump 8 Relay to Pin 11
 
 Note: Do Not use Pin 6 to trigger a relay. We reserved that pin to control the lights because it is the PWM pin on the Arduino.
 
