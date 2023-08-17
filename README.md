@@ -100,10 +100,10 @@ Remove cover from pumps by depressing snaps on both sides of pump head. Remove t
 #### Attach Pumps.
 Use Pump/Relay Control Panel and attach the Peristaltic Pumps to the eight 1.10 inch diameter holes located on the panel. Use a #2-56 x ½ inch length Phillips pan head machine screw and corresponding nut to fasten the pumps to the acrylic. Place a #8 black rubber washer between the pump and acrylic to reduce vibration.
 
-#### Attach Relays.
-Attach the Beef Cake Relays directly above each pump on the Pump/Relay Control Panel. There will be a 4 bolt hole pattern. Use the #2-56 x ⅜ inch length ⅛ inch OD standoffs (Optional - You can use #2-56 x 1/2 inch length Phillips pan head machine screw and corresponding nut instead of the standoffs.) with number #2 washers underneath each hole before the standoff. Fasten each corner with a #2-56 x 5/32 inch length Phillips pan head machine screw.  Note that the red led must be positioned toward the top of the acrylic sheet. Use a #2-56 x ⅜ inch length pan head Phillips machine screw and fasten relays from other side of acrylic.
+#### Attach Relay Module.
+Attach the 8-Channel Relay Module directly above each pump on the Pump/Relay Control Panel. There will be a 4 bolt hole pattern. Use the #2-56 x ⅜ inch length ⅛ inch OD standoffs (Optional - You can use #2-56 x 1/2 inch length Phillips pan head machine screw and corresponding nut instead of the standoffs.) with number #2 washers underneath each hole before the standoff. Fasten each corner with a #2-56 x 5/32 inch length Phillips pan head machine screw.  Note that the red led must be positioned toward the top of the acrylic sheet. Use a #2-56 x ⅜ inch length pan head Phillips machine screw and fasten relays from other side of acrylic.
 
-Tip: When attaching the fasteners, washers and standoffs to the relays, allow them to be loose. This will help with easy alignment to the corresponding holes on the acrylic than retighten fasteners on relays.
+Tip: When attaching the fasteners, washers and standoffs to the relay module, allow them to be loose. This will help with easy alignment to the corresponding holes on the acrylic than retighten fasteners on relays.
 
 ![](hardware/photos/002.jpg)
 
