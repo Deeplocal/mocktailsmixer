@@ -29,7 +29,7 @@ process.env['GOOGLE_APPLICATION_CREDENTIALS'] = path.join(
   'secretkey.json'
 )
 function processTranscript(transcript) {
-  let keyWords = ['mechanical', 'lavender', 'mud', 'mango', 'strawberry', 'zero', 'one', 'two', 'three', 'four', 'five,', 'six', 'seven'];
+  let keyWords = ['mechanical', 'lavender', 'mud', 'mango', 'strawberry'];
   for (let i = 0; i < keyWords.length; i++) {
     let kw = keyWords[i]
     if (transcript.includes(kw))
@@ -122,113 +122,92 @@ function keyWordToArduino(keyword) {
 
   if (keyword.includes('mango')) {
 
-    //open b0
-    setTimeout(() => {
-      console.log("b0 on")
-      port.write("b0r!\n");
 
-    }, 3000)
 
-    //hack to open b0 twice
+    //open b0 lemonade after 1 second of button press
     setTimeout(() => {
       port.write("b0r!\n");
-    }, 8000)
-
-    // open b7
-    setTimeout(() => {
-      console.log("b7 on")
-      port.write("b7r!\n");
-    }, 4000)
-
-    // close b7
-    setTimeout(() => {
-      console.log("b7 off")
-      port.write("b7l!\n")
-    }, 12000);
-
-    // close b7 twice
-    setTimeout(() => {
-      port.write("b7l!\n");
-    }, 8000)
-
-
-    //close b0
-
-    setTimeout(() => {
-      console.log("b0 off")
-      port.write("b0l!\n")
-    }, 13000 + 1000 + 3000);
-
-
-
+      // open b7 mango concentrate after 2 seconds
+      setTimeout(() => {
+        port.write("b7r!\n");
+      }, 2000)
+      // close b7 mango concentrate after 44 seconds
+      setTimeout(() => {
+        port.write("b7l!\n")
+      }, 44000);
+      // turn off b0 lemonade after 132 seconds
+      setTimeout(() => {
+        port.write("b0l!\n")
+      }, 132000);
+    }, 1000)
   }
 
+
   else if (keyword.includes('mechanical')) {
-    //open b2
+    //open b1 lemonade after 1 second
     setTimeout(() => {
       port.write("b1r!\n");
-      //after one second of b2 being open, open b3
+      //open b5 watermelon after 2 seconds
       setTimeout(() => {
         port.write("b5r!\n");
-      }, 1000)
-      // after 44 seconds of b2 being open, close b2
+      }, 2000)
+      // after 44 seconds close b1 lemonade
       setTimeout(() => {
         port.write("b1l!\n")
-        //after one second of b2 close, close b3
+        //after one second of b1 close, close b5 watermelon
         setTimeout(() => {
           port.write("b5l!\n")
         }, 1000);
       }, 44000);
 
-    }, 3000)
+    }, 1000)
   }
 
   else if (keyword.includes('mud')) {
 
-    //open b2
+    //open b2 lemonade after 1 second
     setTimeout(() => {
       port.write("b2r!\n");
-      //after one second of b2 being open, open b3
+      //open b3 iced tea after 2 seconds
       setTimeout(() => {
         port.write("b3r!\n");
-      }, 1000)
-      // after 44 seconds of b2 being open, close b2
+      }, 2000)
+      // after 44 seconds close b2 lemonade
       setTimeout(() => {
         port.write("b2l!\n")
-        //after one second of b2 close, close b3
+        //after one second of b2 close, close b3 iced tea
         setTimeout(() => {
           port.write("b3l!\n")
         }, 1000);
       }, 44000);
 
-    }, 3000)
+    }, 1000)
   }
 
   else if (keyword.includes('lavender')) {
 
-    //open b1
+    //open b1 lemonade after 1 second
     setTimeout(() => {
       port.write("b1r!\n");
-      //after one second of b1 being open, open b6
+      //after two seconds open b6 lavender syrup
       setTimeout(() => {
         port.write("b6r!\n");
-        //after 12 second of b6 being open, close b6
+        //after 12 seconds close b6 lavender
         setTimeout(() => {
           port.write("b6l!\n")
-        }, 44000);
-      }, 1000)
-
+        }, 12000);
+      }, 2000)
       // after 165 seconds of b1 being open, close b1
       setTimeout(() => {
         port.write("b1l!\n")
       }, 132000);
 
-    }, 3000)
+    }, 1000)
   }
 
   else if (keyword.includes('strawberry')) {
 
-    //open b4
+    //open b4 strawberry lemonade
     setTimeout(() => {
       port.write("b4r!\n");
 
@@ -237,87 +216,7 @@ function keyWordToArduino(keyword) {
         port.write("b4l!\n")
 
       }, 176000)
-    }, 3000)
-  }
-
-  else if (keyword.includes('zero')) {
-
-    port.write("b0r!\n");
-
-    setTimeout(() => {
-      port.write("b0l!\n");
-
-    }, 10000);
-  }
-
-  else if (keyword.includes('one')) {
-
-    port.write("b1r!\n");
-
-    setTimeout(() => {
-      port.write("b1l!\n");
-
-    }, 10000);
-  }
-
-  else if (keyword.includes('two')) {
-
-    port.write("b2r!\n");
-
-    setTimeout(() => {
-      port.write("b2l!\n");
-
-    }, 10000);
-  }
-
-  else if (keyword.includes('three')) {
-
-    port.write("b3r!\n");
-
-    setTimeout(() => {
-      port.write("b3l!\n");
-
-    }, 10000);
-  }
-
-  else if (keyword.includes('four')) {
-
-    port.write("b4r!\n");
-
-    setTimeout(() => {
-      port.write("b4l!\n");
-
-    }, 10000);
-  }
-
-  else if (keyword.includes('five')) {
-
-    port.write("b5r!\n");
-
-    setTimeout(() => {
-      port.write("b5l!\n");
-
-    }, 10000);
-  }
-
-  else if (keyword.includes('six')) {
-
-    port.write("b6r!\n");
-
-    setTimeout(() => {
-      port.write("b6l!\n");
-
-    }, 10000);
-  }
-
-  else if (keyword.includes('seven')) {
-
-    port.write("b7r!\n");
-
-    setTimeout(() => {
-      port.write("b7l!\n");
-
-    }, 10000);
+    }, 1000)
   }
 
   else {
