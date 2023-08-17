@@ -157,13 +157,13 @@ Note: We also recommend using a lower gauge wire (12 or 14 gauge), for the DC po
 
 ![](hardware/photos/024.jpg)
 
-### Step 5: Wire the Pumps and Relays
-Before we start to wire the pumps and relays, first assemble the relays. We used the Sparkfun Beefcake relays for this build and the assembly instructions for them can be found [here](https://learn.sparkfun.com/tutorials/beefcake-relay-control-hookup-guide). We like them because they are easy to use and readily available—but cheaper alternatives are available.
+### Step 5: Wire the Pumps and Relay Module
+Before we start to wire the pumps and relays, first assemble the relay module. We used the SainSmart 8-Channel Relay Module for this build and the assembly instructions for it can be found [here](https://docs.sainsmart.com/article/u1jgnz4x6y-8-channel-5-v-relay-module-resource). We like it because it is easy to use and readily available—but cheaper alternatives are available.
 Next, mount all of the pumps and relays to Pump-Relay Control Panel.
 
 ![](hardware/photos/004.jpg)
 
-Now we are ready to wire the pumps and relays. First connect the 5V lines to the 5V Terminal on the relays. We daisy chained the lines across the relays to reduce the amount of wires going to the main 5V terminal.
+Now we are ready to wire the pumps and relay module. First connect the 5V lines to the 5V Terminal on the module. We daisy chained the lines across the relays to reduce the amount of wires going to the main 5V terminal.
 
 Similarly to the 5V power, connect the Ground wires to the GND terminals on the relays, also daisy chaining them.
 Next, connect the control lines from the CTRL terminal on their respective pins on the Arduino. To make connecting the control lines to the Arduino easier, we waited until they were all plugged in before we mounted the Arduino; this way we could still read the pin locations on the back or reset the Arduino if necessary.
