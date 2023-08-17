@@ -127,32 +127,42 @@ function keyWordToArduino(keyword) {
       console.log("b0 on")
       port.write("b0r!\n");
 
-
-
-      // after 132 seconds of b0 being open, close b0
-
     }, 3000)
 
+    //hack to open b0 twice
     setTimeout(() => {
       port.write("b0r!\n");
     }, 5000 + 3000)
 
-    //after one second of b0 being open, open b7
+    // open b7
     setTimeout(() => {
       console.log("b7 on")
       port.write("b7r!\n");
-      //after 44 second of b7 being open, close b7
-
     }, 1000 + 3000)
 
+    // close b7
     setTimeout(() => {
       console.log("b7 off")
       port.write("b7l!\n")
     }, 4000 + 1000 + 3000);
+
+    // close b7 twice
+    setTimeout(() => {
+      port.write("b7!!\n");
+    }, 5000 + 3000)
+
+
+    //close b0
+
     setTimeout(() => {
       console.log("b0 off")
       port.write("b0l!\n")
     }, 13000 + 1000 + 3000);
+
+    // close b0 twice
+    setTimeout(() => {
+      port.write("b0r!\n");
+    }, 5000 + 3000 + 100000)
 
 
   }
