@@ -164,22 +164,22 @@ function keyWordToArduino(keyword) {
   }
 
   else if (keyword.includes('mechanical')) {
-    //
-    //open b1
+    //open b2
     setTimeout(() => {
       port.write("b1r!\n");
-      //after one second of b1 being open, open b5
+      //after one second of b2 being open, open b3
       setTimeout(() => {
         port.write("b5r!\n");
       }, 1000)
-      // after 44 seconds of b1 being open, close b1
+      // after 44 seconds of b2 being open, close b2
       setTimeout(() => {
         port.write("b1l!\n")
-        //after one second of b1 close, close b5
+        //after one second of b2 close, close b3
         setTimeout(() => {
           port.write("b5l!\n")
         }, 1000);
       }, 44000);
+
     }, 3000)
   }
 
