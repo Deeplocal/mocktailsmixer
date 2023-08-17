@@ -211,7 +211,7 @@ function keyWordToArduino(keyword) {
       port.write("b1r!\n");
       //after one second of b1 being open, open b6
       setTimeout(() => {
-        port.write("br!\n");
+        port.write("b6r!\n");
         //after 12 second of b6 being open, close b6
         setTimeout(() => {
           port.write("b6l!\n")
@@ -220,7 +220,7 @@ function keyWordToArduino(keyword) {
 
       // after 165 seconds of b1 being open, close b1
       setTimeout(() => {
-        port.write("b0l!\n")
+        port.write("b1l!\n")
       }, 132000);
 
     }, 3000)
