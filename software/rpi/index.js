@@ -120,24 +120,22 @@ convertTextToMp3()
 function keyWordToArduino(keyword) {
 
   if (keyword.includes('mango')) {
-
-
-
-    //open b0 lemonade after 1 second of button press
+    //open b1 lemonade after 1 second
     setTimeout(() => {
-      port.write("b0r!\n");
-      // open b7 mango concentrate after 2 seconds
+      port.write("b7r!\n");
+      //open b5 watermelon after 2 seconds
       setTimeout(() => {
-        port.write("b7r!\n");
+        port.write("b0r!\n");
       }, 2000)
-      // close b7 mango concentrate after 44 seconds
+      // after 44 seconds close b1 lemonade
       setTimeout(() => {
         port.write("b7l!\n")
+        //after one second of b1 close, close b5 watermelon
+        setTimeout(() => {
+          port.write("b0l!\n")
+        }, 1000);
       }, 44000);
-      // turn off b0 lemonade after 132 seconds
-      setTimeout(() => {
-        port.write("b0l!\n")
-      }, 132000);
+
     }, 1000)
   }
 
