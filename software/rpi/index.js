@@ -8,7 +8,7 @@ const port = new SerialPort(
   { path: '/dev/ttyACM0', baudRate: 9600 },
   function (err) {
     if (err) {
-      return console.log('Error: ', err.message);
+      return ('Error: ', err.message);
     }
   }
 );
@@ -59,16 +59,16 @@ function buttonCallback(data) {
       Speech.stopRecording();
       port.write("o!\n");
       transcript = Speech.getResult();
-      console.log(transcript);
+      //console.log(transcript);
       word = transcript.includes("mango");
-      console.log(`FIRST RECORDING: ${transcript}`);
-      console.log(`${word}`);
+      // console.log(`FIRST RECORDING: ${transcript}`);
+      // console.log(`${word}`);
       keyword = processTranscript(transcript);
-      console.log(keyword);
+      //console.log(keyword);
       keyWordToArduino(keyword);
     }, 10000);
   } else {
-    console.log("don't know that one");
+    //console.log("don't know that one");
   }
 }
 
@@ -78,7 +78,7 @@ function handleSerial(data) {
   serialBuffer += data.toString();
   if (serialBuffer.indexOf("\n") != -1) {
     let sb = serialBuffer.slice(0, serialBuffer.indexOf("\n"));
-    console.log("Serial recieved: ", sb.toString());
+    //  console.log("Serial recieved: ", sb.toString());
 
     // if statement redundant
     if (sb.startsWith("button")) {
@@ -109,10 +109,10 @@ async function convertTextToMp3() {
 
   await writeFile("output.mp3", response.audioContent, 'binary')
 
-  console.log('text to speech working');
+  //console.log('text to speech working');
   await writeFile("strawberry.mp3", response.audioContent, 'binary')
 
-  console.log('text to speech working');
+  // console.log('text to speech working');
 }
 
 convertTextToMp3()
