@@ -219,6 +219,14 @@ function keyWordToArduino(keyword) {
         port.write("b1l!\n")
       }, 132000);
 
+      setTimeout(() => {
+        port.write("b6l!\n")
+      }, 16000);
+
+      setTimeout(() => {
+        port.write("b1l!\n")
+      }, 135000);
+
     }, 1000)
   }
 
@@ -233,6 +241,10 @@ function keyWordToArduino(keyword) {
         port.write("b4l!\n")
 
       }, 176000)
+
+      setTimeout(() => {
+        port.write("b4l!\n")
+      }, 178000);
     }, 1000)
   }
 
