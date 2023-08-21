@@ -3,7 +3,6 @@ const { DialogComponent } = require('./dialog');
 const path = require('path');
 const { SerialPort } = require('serialport')
 
-//fgggrg
 
 const port = new SerialPort(
   { path: '/dev/ttyACM0', baudRate: 9600 },
