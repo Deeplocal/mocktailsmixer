@@ -14,6 +14,9 @@ const port = new SerialPort(
   }
 );
 
+port.on("open", () => {
+  port.write("\0");
+});
 
 
 // remove text to speech because we didn't use it
