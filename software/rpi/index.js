@@ -58,7 +58,7 @@ function buttonCallback(data) {
     Speech.startRecording();
     setTimeout(() => {
       Speech.stopRecording();
-      port.write("o!");
+      port.write("o!"); console.log("sending:", "o!");
       transcript = Speech.getResult();
       console.log(transcript);
       word = transcript.includes("mango");
@@ -82,7 +82,7 @@ function handleSerial(data) {
     // if statement redundant
     if (sb.startsWith("button")) {
       buttonCallback(sb);
-      port.write("a!");
+      port.write("a!"); console.log("sending:", "a!");
     }
     serialBuffer = serialBuffer.slice(serialBuffer.indexOf("\n") + 1);
   }
@@ -122,28 +122,28 @@ function keyWordToArduino(keyword) {
 
     //open b0 lemonade after 1 second of button press
     setTimeout(() => {
-      port.write("b0r!");
+      port.write("b0r!"); console.log("sending:", "b0r!");
       // open b7 mango concentrate after 2 seconds
       setTimeout(() => {
-        port.write("b7r!");
+        port.write("b7r!"); console.log("sending:", "b7r!");
       }, 2000)
       // close b7 mango concentrate after 44 seconds
       setTimeout(() => {
-        port.write("b7l!")
+        port.write("b7l!"); console.log("sending:", "b7l!")
       }, 44000);
       // turn off b0 lemonade after 132 seconds
       setTimeout(() => {
-        port.write("b0l!")
+        port.write("b0l!"); console.log("sending:", "b0l!")
       }, 132000);
 
       //-----
 
       setTimeout(() => {
-        port.write("b7l!")
+        port.write("b7l!"); console.log("sending:", "b7l!")
       }, 45000);
 
       setTimeout(() => {
-        port.write("b0l!")
+        port.write("b0l!"); console.log("sending:", "b0l!")
       }, 133000);
 
     }, 1000)
@@ -153,26 +153,26 @@ function keyWordToArduino(keyword) {
   else if (keyword.includes('mechanical')) {
     //open b1 lemonade after 1 second
     setTimeout(() => {
-      port.write("b1r!");
+      port.write("b1r!"); console.log("sending:", "b1r!");
       //open b5 watermelon after 2 seconds
       setTimeout(() => {
-        port.write("b5r!");
+        port.write("b5r!"); console.log("sending:", "b5r!");
       }, 2000)
       // after 44 seconds close b1 lemonade
       setTimeout(() => {
-        port.write("b1l!")
+        port.write("b1l!"); console.log("sending:", "b1l!")
         //after one second of b1 close, close b5 watermelon
         setTimeout(() => {
-          port.write("b5l!")
+          port.write("b5l!"); console.log("sending:", "b5l!")
         }, 1000);
       }, 44000);
       //------
       setTimeout(() => {
-        port.write("b1l!")
+        port.write("b1l!"); console.log("sending:", "b1l!")
       }, 46000);
 
       setTimeout(() => {
-        port.write("b5l!")
+        port.write("b5l!"); console.log("sending:", "b5l!")
       }, 47000);
 
 
@@ -183,17 +183,17 @@ function keyWordToArduino(keyword) {
 
     //open b2 lemonade after 1 second
     setTimeout(() => {
-      port.write("b2r!");
+      port.write("b2r!"); console.log("sending:", "b2r!");
       //open b3 iced tea after 2 seconds
       setTimeout(() => {
-        port.write("b3r!");
+        port.write("b3r!"); console.log("sending:", "b3r!");
       }, 2000)
       // after 44 seconds close b2 lemonade
       setTimeout(() => {
-        port.write("b2l!")
+        port.write("b2l!"); console.log("sending:", "b2l!")
         //after one second of b2 close, close b3 iced tea
         setTimeout(() => {
-          port.write("b3l!")
+          port.write("b3l!"); console.log("sending:", "b3l!")
         }, 1000);
       }, 44000);
 
@@ -204,26 +204,26 @@ function keyWordToArduino(keyword) {
 
     //open b1 lemonade after 1 second
     setTimeout(() => {
-      port.write("b1r!");
+      port.write("b1r!"); console.log("sending:", "b1r!");
       //after two seconds open b6 lavender syrup
       setTimeout(() => {
-        port.write("b6r!");
+        port.write("b6r!"); console.log("sending:", "b6r!");
         //after 12 seconds close b6 lavender
         setTimeout(() => {
-          port.write("b6l!")
+          port.write("b6l!"); console.log("sending:", "b6l!")
         }, 12000);
       }, 2000)
       // after 165 seconds of b1 being open, close b1
       setTimeout(() => {
-        port.write("b1l!")
+        port.write("b1l!"); console.log("sending:", "b1l!")
       }, 132000);
 
       setTimeout(() => {
-        port.write("b6l!")
+        port.write("b6l!"); console.log("sending:", "b6l!")
       }, 16000);
 
       setTimeout(() => {
-        port.write("b1l!")
+        port.write("b1l!"); console.log("sending:", "b1l!")
       }, 135000);
 
     }, 1000)
@@ -233,16 +233,16 @@ function keyWordToArduino(keyword) {
 
     //open b4 strawberry lemonade
     setTimeout(() => {
-      port.write("b4r!");
+      port.write("b4r!"); console.log("sending:", "b4r!");
 
       //after 176 seconds close b4
       setTimeout(() => {
-        port.write("b4l!")
+        port.write("b4l!"); console.log("sending:", "b4l!")
 
       }, 176000)
 
       setTimeout(() => {
-        port.write("b4l!")
+        port.write("b4l!"); console.log("sending:", "b4l!")
       }, 178000);
     }, 1000)
   }
