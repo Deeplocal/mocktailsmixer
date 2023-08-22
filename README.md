@@ -1,4 +1,5 @@
-# Google Assistant SDK Demo: Mocktails Mixer
+# Google Assistant SDK Demo: Mocktails Mixer Imani Test
+
 
 ![](hardware/photos/hero.jpg)
 
