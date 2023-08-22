@@ -353,7 +353,7 @@ The buttonCallback() function calls the function keyWordToArduino(‘keyword’)
 The keyWordToArduino function has a series of if statements that will open and close the relays of each bottle depending on the correct keyword being detected.
 
 The initial if statement will use the include() method to check if the variable 'keyword' includes a chosen keyword like 'mango' for example.
-When the word 'mango' is detected, the executed code will include the port.write() method to send a string message to the arduino via serial port to open the first relay. Ex: port.write("b0r!\n");
+When the word 'mango' is detected, the executed code will include the port.write() method to send a string message to the arduino via serial port to open the first relay. Ex: port.write("b0r!");
 
 Arduino Serial Commands:
 
@@ -373,9 +373,9 @@ Arduino Serial Commands:
       
 Each port.write() method must have only one serial command in order to be received by arduino. Ex: to turn on and off relay number one looks like:
 
- port.write("b0r!\n")
+ port.write("b0r!")
  
- port.write("b0l!\n")
+ port.write("b0l!")
  
 
 Once the first relay is open, a timeout is set to open the next relay after 1 second of the first relay being open. If you open the relays simultaneously the arduino will fail to turn either relay on because there are too many commands at one time, the 1 second setTimeOut is to avoid this problem.
