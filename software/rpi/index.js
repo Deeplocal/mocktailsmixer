@@ -8,6 +8,7 @@ const port = new SerialPort(
   { path: '/dev/ttyACM0', baudRate: 9600 },
   function (err) {
     if (err) {
+      console.error(err);
       return ('Error: ', err.message);
     }
   }
@@ -59,7 +60,7 @@ function buttonCallback(data) {
       Speech.stopRecording();
       port.write("o!\n");
       transcript = Speech.getResult();
-      //console.log(transcript);
+      console.log(transcript);
       word = transcript.includes("mango");
       // console.log(`FIRST RECORDING: ${transcript}`);
       // console.log(`${word}`);
@@ -67,8 +68,6 @@ function buttonCallback(data) {
       //console.log(keyword);
       keyWordToArduino(keyword);
     }, 10000);
-  } else {
-    //console.log("don't know that one");
   }
 }
 
@@ -78,7 +77,7 @@ function handleSerial(data) {
   serialBuffer += data.toString();
   if (serialBuffer.indexOf("\n") != -1) {
     let sb = serialBuffer.slice(0, serialBuffer.indexOf("\n"));
-    //  console.log("Serial recieved: ", sb.toString());
+    console.log("Serial recieved: ", sb.toString());
 
     // if statement redundant
     if (sb.startsWith("button")) {
