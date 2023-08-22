@@ -1,4 +1,5 @@
-# Google Assistant SDK Demo: Mocktails Mixer
+# Google Assistant SDK Demo: Mocktails Mixer Gizmology 2023
+
 
 ![](hardware/photos/hero.jpg)
 
