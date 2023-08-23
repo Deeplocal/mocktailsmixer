@@ -17,14 +17,13 @@ const port = new SerialPort(
 port.on("open", () => {
   port.write("o!");
   console.log("reseting");
-  // port.write("b0r!");
-  // port.write("b0r!");
-  // port.write("b0r!");
-  // port.write("b0r!");
-  // port.write("b0r!");
-  // port.write("b0r!");
-  // port.write("b0r!");
 });
+
+port.on("error", (err) => {
+  console.error("Serial error:", err);
+});
+
+
 
 
 // remove text to speech because we didn't use it
