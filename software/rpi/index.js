@@ -15,7 +15,15 @@ const port = new SerialPort(
 );
 
 port.on("open", () => {
-  port.write("\0");
+  port.write("o!");
+  console.log("reseting");
+  // port.write("b0r!");
+  // port.write("b0r!");
+  // port.write("b0r!");
+  // port.write("b0r!");
+  // port.write("b0r!");
+  // port.write("b0r!");
+  // port.write("b0r!");
 });
 
 
