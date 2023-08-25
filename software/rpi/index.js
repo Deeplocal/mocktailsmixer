@@ -163,14 +163,14 @@ function keyWordToArduino(keyword) {
   else if (keyword.includes('mechanical')) {
     //open b1 lemonade after 1 second
     setTimeout(() => {
-      port.write("b2r!"); console.log("sending:", "b2r!");
+      port.write("b1r!"); console.log("sending:", "b1r!");
       //open b5 watermelon after 2 seconds
       setTimeout(() => {
         port.write("b5r!"); console.log("sending:", "b5r!");
       }, 2000)
       // after 44 seconds close b1 lemonade
       setTimeout(() => {
-        port.write("b2l!"); console.log("sending:", "b2l!")
+        port.write("b1l!"); console.log("sending:", "b1l!")
         //after one second of b1 close, close b5 watermelon
         setTimeout(() => {
           port.write("b5l!"); console.log("sending:", "b5l!")
@@ -178,7 +178,7 @@ function keyWordToArduino(keyword) {
       }, 44000);
       //------
       setTimeout(() => {
-        port.write("b2l!"); console.log("sending:", "b2l!")
+        port.write("b1l!"); console.log("sending:", "b1l!")
       }, 46000);
 
       setTimeout(() => {
@@ -193,14 +193,14 @@ function keyWordToArduino(keyword) {
 
     //open b2 lemonade after 1 second
     setTimeout(() => {
-      port.write("b2r!"); console.log("sending:", "b2r!");
+      port.write("b1r!"); console.log("sending:", "b1r!");
       //open b3 iced tea after 2 seconds
       setTimeout(() => {
         port.write("b3r!"); console.log("sending:", "b3r!");
       }, 2000)
       // after 44 seconds close b2 lemonade
       setTimeout(() => {
-        port.write("b2l!"); console.log("sending:", "b2l!")
+        port.write("b1l!"); console.log("sending:", "b1l!")
         //after one second of b2 close, close b3 iced tea
         setTimeout(() => {
           port.write("b3l!"); console.log("sending:", "b3l!")
@@ -214,11 +214,11 @@ function keyWordToArduino(keyword) {
 
     //open b1 lemonade after 1 second
     setTimeout(() => {
-      port.write("b1r!"); console.log("sending:", "b1r!");
+      port.write("b2r!"); console.log("sending:", "b2r!");
       //after two seconds open b6 lavender syrup
 
       setTimeout(() => {
-        port.write("b1l!"); console.log("sending:", "b1l!")
+        port.write("b2l!"); console.log("sending:", "b2l!")
       }, 144000);
 
     }, 1000)
