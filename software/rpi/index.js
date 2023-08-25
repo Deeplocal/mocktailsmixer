@@ -163,14 +163,14 @@ function keyWordToArduino(keyword) {
   else if (keyword.includes('mechanical')) {
     //open b1 lemonade after 1 second
     setTimeout(() => {
-      port.write("b1r!"); console.log("sending:", "b1r!");
+      port.write("b1r!"); console.log("sending:", "b2r!");
       //open b5 watermelon after 2 seconds
       setTimeout(() => {
         port.write("b5r!"); console.log("sending:", "b5r!");
       }, 2000)
       // after 44 seconds close b1 lemonade
       setTimeout(() => {
-        port.write("b1l!"); console.log("sending:", "b1l!")
+        port.write("b1l!"); console.log("sending:", "b2l!")
         //after one second of b1 close, close b5 watermelon
         setTimeout(() => {
           port.write("b5l!"); console.log("sending:", "b5l!")
@@ -178,7 +178,7 @@ function keyWordToArduino(keyword) {
       }, 44000);
       //------
       setTimeout(() => {
-        port.write("b1l!"); console.log("sending:", "b1l!")
+        port.write("b2l!"); console.log("sending:", "b2l!")
       }, 46000);
 
       setTimeout(() => {
