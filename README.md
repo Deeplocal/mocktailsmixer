@@ -4,7 +4,10 @@
 ![](hardware/photos/hero.jpg)
 
 ## Make a DIY robotic mocktails mixer with the Google Assistant built in.
-Google teamed up with innovation studio Deeplocal to create the [Google Assistant SDK: Mocktails Mixer](http://deeplocal.com/mocktailsmixer/) — a DIY robotic home bartender that whips up your favorite mixed drinks at your command and serves you a splash of small talk while you wait.
+##In the Spring of 2023, innovation studio and experiential design firm Deeplocal launched Gizmology, a one-year creative technology apprenticeship program for recent high school graduates and underemployed adults in Pittsburgh’s Black community. Supported in part by Deeplocal’s parent company WPP’s racial equity committments, Gizmology’s goal was to advance racial equity in creative and technical fields through on-the-job training and mentorship. Through an initial upfront classroom training spanning nearly four months the Gizmology apprentices, or Gizmos as they affectionately named themselves, learned the foundational skills related to 3D design, electrical engineering, physical computing, fabrication methods (laser cutting/welding/woodworking), and creative technology. Designed as two semesters, Gizmology 1 and Gizmology 2, each semester culminated with a capstone project; the final capstone for the classroom training was to ‘re-create’ a robotic mocktails mixer with Google Assistant built in. 
+
+In mid-July, after weeks of interdisciplinary training and exposure, each of the Gizmos chose an apprenticeship track and set-out to complete the final capstone project fulfilling their specific roles. Jason focused on exhibit fabrication, Jordan delved deeper into technical integration, and Justin focused on Mechanical Design, with each pitching in to work as a team and support the assembly. For Creative Tech, Imani and Mecca shared the responsibility of updating and converting the SDK from Python to Node.Js as it was no longer valid; this was no small feat and an amazing accomplishment for a beginning creative technologist. For all the Gizmos, it was evident that the recreation of the robotic mocktails mixer with Google Assistant wasn’t simply going to be a matter of merely following directions, it was going to take creativity, ingenuity, and most importantly- the real world application of the skills they learned to successfully recreate the project as a team. What you’ll see below is the journey of the Gizmos to create the “Gizmology Mocktails Mixer”, complete with six uniquely designed mocktails (from eight different flavors) representing personal connections to each member of the Gizmology team. This DIY robotic home bartender whips up your favorite mixed drinks at your command–in the true spirit of the Gizmos!
+
 
 **Disclaimer:** THESE INSTRUCTIONS ARE BEING PROVIDED FOR INFORMATIONAL PURPOSES ONLY AND ARE NOT INTENDED TO BE USED FOR THE PRODUCTION OF COMMERCIAL PRODUCTS.  BY EXECUTING THESE INSTRUCTIONS, YOU AGREE TO ASSUME ALL LIABILITY IN CONNECTION WITH YOUR BUILDING AND USE OF ANY DEVICE. DEEPLOCAL DISCLAIMS ALL WARRANTIES EXPRESS OR IMPLIED WITH RESPECT TO THESE INSTRUCTIONS AND ANY RESULTING DEVICE INCLUDING BUT NOT LIMITED TO WARRANTIES FOR MERCHANTABILITY, FITNESS FOR ANY PARTICULAR PURPOSE, AND NON-INFRINGEMENT.  YOU SHOULD USE EXTREME CAUTION WHEN BUILDING AND USING ANY DEVICE PURSUANT TO THESE INSTRUCTIONS.  IN NO EVENT SHALL DEEPLOCAL BE LIABLE FOR ANY CLAIM OR DAMAGES, INCLUDING BUT NOT LIMITED TO CLAIMS OR DAMAGES RELATED TO DEATH OR PERSONAL INJURY, PROPERTY DAMAGE, OR PRODUCT LIABILITY.
 
@@ -17,9 +20,8 @@ Google teamed up with innovation studio Deeplocal to create the [Google Assistan
 
 **Features:**
 
-- Voice-controlled drink ordering (and chitchat!)
+- Voice-controlled drink ordering 
 - Modular design allows you to customize your Mixer to include as many ingredients and drink combinations as you choose
-- A model and inspiration for other projects that integrate the Google Assistant SDK
 
 ## What You’ll Find
 - diagrams/
@@ -58,12 +60,12 @@ Note: All materials used in this build are rated as “food safe.” Liquid does
 ![](diagrams/component_diagram.png)
 
 #### Laser cut all 2D profiles into the acrylic sheets.
-Note: DFXs are all in inches. Please scale according to input of laser cutter. See attached drawings for design guidance.
+Note: DFXs are all in inches. Please scale according to input of the laser cutter. See attached drawings for design guidance.
 - A. Top Panel- ¼ inch thick
 - B. Bottle Capture Panel- ¼ inch thick
-- C. Lid Capture Panel- ¼ inch thick
+- C. Lid Capture Panel- ¼ inch thick*
 - D. Drip Panel- ¼ inch thick
-- E. Pump-Relay Control Panel- ¼ inch thick
+- E. Pump-Relay Control Panel- ¼ inch thick*
 - F. Pour Panel- ¼ inch thick
 - G. Bottom Panel- ¼ inch thick
 - H. Inside Side Panel- ¼ inch thick
@@ -71,15 +73,21 @@ Note: DFXs are all in inches. Please scale according to input of laser cutter. S
 - J. Inside Side Button Panel-¼ inch thick
 - K. Outside SIde Button Panel- ¼ inch thick
 - L. Front Panel- ¼ inch thick
-- M. Rear Panel- ¼ inch thick
+- M. Rear Panel- ¼ inch thick*
 - N. Cup Indicator Panel- 1/16 inch thick
-- O. Arduino Top Plate- 1/16 inch thick
+- O. Arduino Top Plate- 1/16 inch thick 
 - P.  Arduino Bottom Plate- 1/16 inch thick
 - Q. Speaker Diffusion Level
 - R. Speaker Clear Level 16th- 1/16 inch thick
 - S. Speaker Black Level 8th- ⅛ inch thick
 - T. Speaker Black Level 8th 1- ⅛ inch thick
 - U. Speaker Black Level 4th 1- ¼ inch thick
+
+*Panels that were revised include:
+Lid Capture Panel- needed holes for the light wire
+Pump Relay Control Panel- CAD mount holes for brackets. CAD holes for wires from pumps to power and access for tubes to run through, holes for the relay to be mounted
+Rear panel- CAD holes for mounting a fan 
+
 
 ### Step 2: Assemble Bottle Holder Sub
 Attach Top Panel with Bottle Capture Panel together with #10-32 x 1/2 inch length button socket cap and #10-32 x 1 inch length ¼ OD standoff.
@@ -99,12 +107,18 @@ Remove cover from pumps by depressing snaps on both sides of pump head. Remove t
 ![](hardware/photos/015.jpg)
 
 #### Attach Pumps.
-Use Pump/Relay Control Panel and attach the Peristaltic Pumps to the eight 1.10 inch diameter holes located on the panel. Use a #2-56 x ½ inch length Phillips pan head machine screw and corresponding nut to fasten the pumps to the acrylic. Place a #8 black rubber washer between the pump and acrylic to reduce vibration.
+The pumps that were available required brackets to be mounted. Brackets were created in solidworks and 3D printed. 
+
+Use the Pump/Relay Control Panel and attach the brackets to the eight 1.10 inch diameter holes located on the panel. Place a #8 black rubber washer between the bracket and acrylic to reduce vibration.
+Use a #2-56 x ½ inch length Phillips pan head machine screw and corresponding nut to fasten the brackets to the acrylic. Use the same screws and nuts to attach the pump to the bracket.
+
 
 #### Attach Relay Module.
-Attach the 8-Channel Relay Module directly above each pump on the Pump/Relay Control Panel. There will be a 4 bolt hole pattern. Use the #2-56 x ⅜ inch length ⅛ inch OD standoffs (Optional - You can use #2-56 x 1/2 inch length Phillips pan head machine screw and corresponding nut instead of the standoffs.) with number #2 washers underneath each hole before the standoff. Fasten each corner with a #2-56 x 5/32 inch length Phillips pan head machine screw.  Note that the red led must be positioned toward the top of the acrylic sheet. Use a #2-56 x ⅜ inch length pan head Phillips machine screw and fasten relays from other side of acrylic.
+In this version, to save time, we have used an 8 channel
+Relay module. Attach the 8-Channel Relay Module directly above each pump on the Pump/Relay Control Panel. There will be a 4 bolt hole pattern. Use the #2-56 x ⅜ inch length ⅛ inch OD standoffs (Optional - You can use #2-56 x 1/2 inch length Phillips pan head machine screw and corresponding nut instead of the standoffs.) with number #2 washers underneath each hole before the standoff. Fasten each corner with a #2-56 x 5/32 inch length Phillips pan head machine screw.  Note that the red led must be positioned toward the top of the acrylic sheet. Use a #2-56 x ⅜ inch length pan head Phillips machine screw and fasten relays from other side of acrylic.
 
 Tip: When attaching the fasteners, washers and standoffs to the relay module, allow them to be loose. This will help with easy alignment to the corresponding holes on the acrylic than retighten fasteners on relays.
+
 
 ![](hardware/photos/002.jpg)
 
@@ -117,8 +131,14 @@ The 2 holes located on the Arduino Bottom Plate are for the Amp. Place 2 #2-56 �
 
 ![](hardware/photos/023.jpg)
 
+#### Attach Arduino Uno and Arduino Mount.
+You can 3D print an Arduino Uno mount by using this link to download the file from GrabCAD. We used a Bambu Studio P1P 3D printer. The file takes about 6 minutes to print in total.
+
+Place the Arduino on the mount, matching the holes on the Arduino to the corresponding holes on the mount. Use screws to secure the Arduino onto the mount. Attach the Arduino and the mount onto the back of the pump panel with VHB. You should leave enough room for the the wires from the relay to come through the slot and attach to the pins on the Arduino Uno.
+
 #### Attach Raspberry Pi to Drip Panel.
-Attach the Raspberry Pi to the underside of the Drip Panel. In the correct orientation, the board will be flipped upside down and the large hole will be towards the back left corner. Attach the board with 4 #2-56 X 5/32 inch length Phillip pan head machine screws to 4 #2-56 X ⅜ inch length ⅛ OD standoffs. This sub-assembly will attach to the four corresponding holes in the Drip Panel. Use another four #2-56 X 3/8 inch length Phillip pan head machine screws through the acrylic to the standoffs.
+Attach the Raspberry Pi to the underside of the Drip Panel using VHB (Very High Bond).
+
 
 ## Wiring the Electrical System
 
@@ -145,7 +165,7 @@ In this version of the Mocktails Mixer, we used eight (8) peristaltic pumps. The
 For visual feedback, we added an LED ring to the Mixer. We used the Adafruit Neopixel. It is very easy to wire and add additional rings, plus the library is easy to use. These draw a decent amount to amperage, so if you want to add more to your build, you will need to size your 5V power supply accordingly.
 
 #### Audio
-Last but not least, we used a USB Microphone to speak with the Assistant that is connected directly to the Raspberry Pi. The speaker is connected to the amplifier on the Arduino’s mounting plate. The amplifier is connected to the Raspberry Pi via a 3.5 mm headphone jack.
+Last but not least, we used a USB Microphone to speak with the Assistant that is connected directly to the Raspberry Pi. We chose to not connect the speaker. If we did, the speaker could be connected to the amplifier on the Arduino’s mounting plate. The amplifier is connected to the Raspberry Pi via a 3.5 mm headphone jack.
 
 ## Electrical System Wiring Instructions
 
@@ -212,7 +232,7 @@ Slight interference can occur on the speaker, because of this we recommend you a
 ### Final Connections
 To power the Raspberry Pi, connect a Ground line to a ground pin on the Pi, then connect a 5V line to the 5V in on the Pi.
 
-To activate the Assistant, there is a button on the side for you to push. To wire this button, connect the COM terminal to the 3.3V Out on the Raspberry Pi. Then, connect the NO terminal on the button to the button’s respective GPIO (in our case GPIO 7). For a cleaner signal, connect a resistor between the NO terminal and Ground.
+To activate the voice command, there is a button on the side for you to push. To wire this button, connect the COM terminal to the 3.3V Out on the Raspberry Pi. Then, connect the NO terminal on the button to the button’s respective GPIO (in our case GPIO 7). For a cleaner signal, connect a resistor between the NO terminal and Ground.
 
 Double check the wiring. Trace all of them from each piece of hardware to their source. Once you feel good about the wiring, go ahead and power up the system. The Raspberry Pi should have a red power light visible and the Arduino should have a blue power light visible as well.
 
@@ -254,56 +274,31 @@ Begin by taking the ¼ inch OD tubing (food safe) and run it from each pump up t
 
 Next using the tube connectors run the ¼ inch OD tubing (food safe) from the pump outlet to the pour holes in the center of the Pour Panel. The tubes will fit snuggly in each of the 8 holes. They are made to have a slight interference fit.
 
-![](hardware/photos/010.jpg)
-
-### Step 13: Assembly Speaker Sub
-Assemble speaker panels together through the Front Panel with #4-40 X 1.25 inch length Phillips head machine screws and corresponding nuts. Layer the Speaker Sub Assembly in the following order as pictured below.
 
 ![](hardware/photos/016.jpg)
 
 ![](hardware/photos/012.jpg)
 
-### Step 14: Attach Front Panel to Unit
+### Step 13: Attach Front Panel to Unit
 Attach Front Panel to unit with 10-32 x ¾ inch length button socket cap and corresponding square nuts. There are two of these that hold the panel in place.
 Tip: Use a piece of Painters tape to hold the square nuts in place until fasteners grab. Tape can be removed after through the bottle holes.
 
-### Step 15: Attach Rear Panel to Unit
+### Step 14: Attach Rear Panel to Unit
 Align the Rear Panel with the corresponding slots and tabs on the rear of the unit. Once again, use the #10-32 x ¾ inch length button socket cap and respective square nuts.
 
 ## Bottle Build
 
-### Step 16: Cut hole in bottle seal
-Use an X-ACTO knife to carefully cut a round hole in the center of the bottle cap seal.
+### Step 15: Drill hole for tube connectors
+In the lids to the carafe, drill a 1/4 inch hole for tubing. 
 
-![](hardware/photos/014.jpg)
-
-### Step 17: Drill hole for tube connectors
-Using a 0.15-inch diameter drill bit, drill two holes across from each other in the center of the lid. You can use an X-ACTO knife to deburr the edges around the hole.
-
-Remove any loose debris after drilling. These holes will be used to attach the tube connectors.
-
-### Step 18: Attach Tube Connectors
-Apply two rubber washers to each of the tube connectors.
-
-Use a hammer and socket head to press fit the connector into the lid. You will hear an audible click when the connector is seated properly. This process will help ensure no leaking occurs.
-
-### Step 19: Attach Tubing and Check Valve
-Cut a 2-inch length of ¼-inch OD tubing and attach it to the connector on the outside of the lid as pictured below.
-
-Next, attach the check valve to the end of this tubing. Note the flow of valve going into the bottle. Air can only go in and liquid cannot come out.
-
-![](hardware/photos/013.jpg)
-
-### Step 20: Place Bottle Assembly into Unit
-Fill bottles with desired liquid, and before flipping over, attach the ¼ OD food safe tubing coming  from the pumps to the open connection on the bottle.
-
-Once this is done, carefully flip bottle over into one of the bottle holding locations.
+### Step 16: Place Bottle Assembly into Unit
+Fill bottles with desired liquid, place on top of the mixer, put the lid on each carafe, feed the tubing throught the hole all the way to the bottom of the carafe. 
 
 ![](hardware/photos/011.jpg)
 
 ## Programming the Mixer
 
-### Step 21: Run Javascript Program
+### Step 17: Run Javascript Program
 
 #### Install node packages: 
 ‘Serialport’
@@ -388,37 +383,23 @@ An else statement is used to tell the user to try again if no keywords were dete
 
 Within the handleSerial() function there is a port.write(“a!”) command which communicates to the Arduino that the button press was received by the JS program and it will not allow any new button press commands to be received until the entire program has run and been completed.
 
-### Step 27: Prepare Arduino
+### Step 18: Prepare Arduino
 - Load sketch onto board.
 - Connect to Raspberry Pi via USB.
 
-### Step 28: Run system
+### Step 19: Run system
 - Ensure you are still in the Python virtual environment. If not: `$ cd && source env/bin/activate`.
 - Change directory: `$ cd /home/pi/embedded-assistant-sdk-python`
 - Run the auth_helper to create an authorization file: `$ python -m googlesamples.rpi.auth_helpers --client-secrets /home/pi/client_secret_*.json`.
 - Run the system `$ python -m googlesamples.rpi`.
 
-### Step 29: Configure your own drinks
+### Step 20: Configure your own drinks
 - Using the api.ai web console, update the agent’s @drink entity and make_drink intent to reflect the drink names.
 - On your Raspberry Pi, update the DRINK_SIZE, MENU and NUM_BOTTLES variables in bartender/\_\_main\_\_.py.
 
-### Step 30: Troubleshooting
+### Step 21: Troubleshooting
 - If the LEDs or relays are not working, check the SER_DEVICE variable in bartender/\_\_main\_\_.py.
 
-## Example Transcript
-(User presses physical button.)
-
-User: Tell Mocktails Mixer to make me a cherry bomb.
-
-Assistant: Coming right up. While I make your drink, would you like to hear the weather or your fortune?
-
-User: How about the weather?
-
-Assistant: What is your ZIP code?
-
-User: 15212.
-
-Assistant: The weather in Pittsburgh, PA is 75 degrees and sunny.
 
 ## Cleaning Your Mixer
 
