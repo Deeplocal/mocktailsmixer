@@ -1,7 +1,7 @@
 # Google Assistant SDK Demo: Mocktails Mixer Gizmology 2023
 
 
-![](hardware/photos/hero.jpg)
+![](hardware/photos/Giz_001.jpg)
 
 ## Make a DIY robotic mocktails mixer with the Google Assistant built in.
 ##In the Spring of 2023, innovation studio and experiential design firm Deeplocal launched Gizmology, a one-year creative technology apprenticeship program for recent high school graduates and underemployed adults in Pittsburgh’s Black community. Supported in part by Deeplocal’s parent company WPP’s racial equity committments, Gizmology’s goal was to advance racial equity in creative and technical fields through on-the-job training and mentorship. Through an initial upfront classroom training spanning nearly four months the Gizmology apprentices, or Gizmos as they affectionately named themselves, learned the foundational skills related to 3D design, electrical engineering, physical computing, fabrication methods (laser cutting/welding/woodworking), and creative technology. Designed as two semesters, Gizmology 1 and Gizmology 2, each semester culminated with a capstone project; the final capstone for the classroom training was to ‘re-create’ a robotic mocktails mixer with Google Assistant built in. 
