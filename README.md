@@ -57,7 +57,7 @@ Note: All materials used in this build are rated as “food safe.” Liquid does
 ## Building the Mixer Body
 
 ### Step 1: Laser Cutting
-![](diagrams/component_diagram.png)
+![](diagrams/Giz_component_diagram.png)
 
 #### Laser cut all 2D profiles into the acrylic sheets.
 Note: DFXs are all in inches. Please scale according to input of the laser cutter. See attached drawings for design guidance.
