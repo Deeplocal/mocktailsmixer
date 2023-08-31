@@ -11,7 +11,7 @@ In mid-July, after weeks of interdisciplinary training and exposure, each of the
 
 **Disclaimer:** THESE INSTRUCTIONS ARE BEING PROVIDED FOR INFORMATIONAL PURPOSES ONLY AND ARE NOT INTENDED TO BE USED FOR THE PRODUCTION OF COMMERCIAL PRODUCTS.  BY EXECUTING THESE INSTRUCTIONS, YOU AGREE TO ASSUME ALL LIABILITY IN CONNECTION WITH YOUR BUILDING AND USE OF ANY DEVICE. DEEPLOCAL DISCLAIMS ALL WARRANTIES EXPRESS OR IMPLIED WITH RESPECT TO THESE INSTRUCTIONS AND ANY RESULTING DEVICE INCLUDING BUT NOT LIMITED TO WARRANTIES FOR MERCHANTABILITY, FITNESS FOR ANY PARTICULAR PURPOSE, AND NON-INFRINGEMENT.  YOU SHOULD USE EXTREME CAUTION WHEN BUILDING AND USING ANY DEVICE PURSUANT TO THESE INSTRUCTIONS.  IN NO EVENT SHALL DEEPLOCAL BE LIABLE FOR ANY CLAIM OR DAMAGES, INCLUDING BUT NOT LIMITED TO CLAIMS OR DAMAGES RELATED TO DEATH OR PERSONAL INJURY, PROPERTY DAMAGE, OR PRODUCT LIABILITY.
 
-![](diagrams/orthographic_diagram.png)
+![](diagrams/Giz_orthographic_diagram.png)
 
 ## Project Information
 - **Estimated time to assemble:** 15 hours
@@ -124,12 +124,6 @@ Tip: When attaching the fasteners, washers and standoffs to the relay module, al
 
 ![](hardware/photos/022.jpg)
 
-#### Attach the Arduino and Amp Mount.
-Place the arduino between the Arduino Top Plate and Arduino Bottom Plate. Also, place 4 #8 rubber washers in between to help keep the spacing of the board even. Using the #8-32 ¼ inch hex 3/8 length standoffs secure the assembly together with a #8-32 nut.
-
-The 2 holes located on the Arduino Bottom Plate are for the Amp. Place 2 #2-56 ⅜ inch length ⅛ inch OD standoffs in place with corresponding #2-56 ⅛ inch length Phillips pan head machine screw. Use 2 more #2-56 x ⅛ inch length Phillips pan head machine screws to secure amp to mount.
-
-![](hardware/photos/023.jpg)
 
 #### Attach Arduino Uno and Arduino Mount.
 You can 3D print an Arduino Uno mount by using this link to download the file from GrabCAD. We used a Bambu Studio P1P 3D printer. The file takes about 6 minutes to print in total.
@@ -137,14 +131,13 @@ You can 3D print an Arduino Uno mount by using this link to download the file fr
 Place the Arduino on the mount, matching the holes on the Arduino to the corresponding holes on the mount. Use screws to secure the Arduino onto the mount. Attach the Arduino and the mount onto the back of the pump panel with VHB. You should leave enough room for the the wires from the relay to come through the slot and attach to the pins on the Arduino Uno.
 
 #### Attach Raspberry Pi to Drip Panel.
-Attach the Raspberry Pi to the underside of the Drip Panel using VHB (Very High Bond).
-
+Attach the Raspberry Pi to the back panel using velcore. 
 
 ## Wiring the Electrical System
 
 #### Electrical System Overview
 
-![](diagrams/wiring_diagram.png)
+![](diagrams/Giz_wiring_diagram.png)
 
 For a clearer view of the wiring diagram download the [fritzing file](diagrams/wiring_fritzing.fzz).
 
@@ -159,13 +152,13 @@ The power system controls the flow of electricity in the Mixer. However, the Mix
 Note: For safety, we recommend placing the power supply in an external enclosure to keep 110V away from the liquids in the mixer.
 
 #### Pumps
-In this version of the Mocktails Mixer, we used eight (8) peristaltic pumps. These are rated and recommended for use at 12V, but you can run them up to 24V if you find that the pumps are running too slow. The pumps are all individually switched by a relay controlled by the Arduino Micro.
+In this version of the Mocktails Mixer, we used eight (8) peristaltic pumps. These are rated and recommended for use at 12V, but you can run them up to 24V if you find that the pumps are running too slow. The pumps are all individually switched by a relay controlled by the Arduino Uno.
 
 #### Lighting
 For visual feedback, we added an LED ring to the Mixer. We used the Adafruit Neopixel. It is very easy to wire and add additional rings, plus the library is easy to use. These draw a decent amount to amperage, so if you want to add more to your build, you will need to size your 5V power supply accordingly.
 
 #### Audio
-Last but not least, we used a USB Microphone to speak with the Assistant that is connected directly to the Raspberry Pi. We chose to not connect the speaker. If we did, the speaker could be connected to the amplifier on the Arduino’s mounting plate. The amplifier is connected to the Raspberry Pi via a 3.5 mm headphone jack.
+Last but not least, we used a USB Microphone to speak and order drinks that is connected directly to the Raspberry Pi. We chose to not connect the speaker. If we did, the speaker could be connected to the amplifier on the Arduino’s mounting plate. The amplifier is connected to the Raspberry Pi via a 3.5 mm headphone jack.
 
 ## Electrical System Wiring Instructions
 
@@ -173,6 +166,8 @@ Last but not least, we used a USB Microphone to speak with the Assistant that is
 To wire the power supply, first connect the AC Lines to their terminals (Black to L or Load, White to N or Neutral, Green to Ground). Next, connect the DC power lines to power supplies.
 Note: To make the wiring easier to follow, we used red wire for all the 12V lines and green for all of the 5V lines. We kept the all of the Ground wires black because all devices will need to share Ground in order to communicate.
 Note: We also recommend using a lower gauge wire (12 or 14 gauge), for the DC power lines moving from the power supply to the terminal block or the wire nut, then using a higher gauge (20 to 24 gauge) for all of the other lines.
+
+Note: The pumps used in this assembly produce a lot of ground noise that can travel throughout the dinrail and could potentially interfere with communication between Raspberry Pi and Arduino to carry out commands properly. It is recommended that you add a 5k capacitor to the dinral with the long side going into the 12V supply and the short side going to ground to store the ground noise and resolve communication interference. 
 
 ![](hardware/photos/021.jpg)
 
@@ -218,16 +213,7 @@ If you would like to add more LED rings, all you need to do is wire the DOUT fro
 ![](hardware/photos/017.jpg)
 
 ### Step 7: Wire the Audio
-Since the microphone is USB controlled, there is no wiring necessary. However, the speaker needs to be hooked up to the Amp, then to the Raspberry Pi.
-
-First, complete the assembly of the amplifier, by soldering the headers and terminal block to the board.
-Next, we’ll connect the Ground line to the Ground pin on the amp, then the 5V Line to the 2-5V pin on the amplifier.
-Using the audio cable with the 3.5 mm jack, connect the positive line to the A+ pin, then connect the negative line to the A- pin.
-If your cable has a ground cable, connect it to the Ground pin as well.
-Now all we need to do is connect the speaker. Connect the speaker’s positive and negative wires to their respective terminal on the amp.
-Slight interference can occur on the speaker, because of this we recommend you add a capacitor between the A+ and A- pins.
-
-![](hardware/photos/020.jpg)
+Since the microphone is USB controlled, there is no wiring necessary.
 
 ### Final Connections
 To power the Raspberry Pi, connect a Ground line to a ground pin on the Pi, then connect a 5V line to the 5V in on the Pi.
