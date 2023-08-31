@@ -172,6 +172,8 @@ Note: We also recommend using a lower gauge wire (12 or 14 gauge), for the DC po
 
 Note: The pumps used in this assembly produce a lot of ground noise that can travel throughout the dinrail and could potentially interfere with communication between Raspberry Pi and Arduino to carry out commands properly. It is recommended that you add a 5k capacitor to the dinral with the long side going into the 12V supply and the short side going to ground to store the ground noise and resolve communication interference. 
 
+![](hardware/photos/Giz_005.jpg)
+
 ![](hardware/photos/021.jpg)
 
 ![](hardware/photos/024.jpg)
@@ -196,10 +198,6 @@ The pin-outs for the Arduino are:
 - Pump 8 Relay to Pin 11
 
 Note: Do Not use Pin 6 to trigger a relay. We reserved that pin to control the lights because it is the PWM pin on the Arduino.
-
-![](hardware/photos/018.jpg)
-
-![](hardware/photos/019.jpg)
 
 To provide power to the pumps, connect the 12V lines to the COM terminal on the relay (also daisy-chained), then connect the Positive (red) terminal of the pump to the NO terminal on the relay.
 
