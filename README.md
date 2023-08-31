@@ -1,5 +1,5 @@
 # Google Assistant SDK Demo: Mocktails Mixer Gizmology 2023
-
+![](hardware/photos/Gizmology-logo-full-color.png)
 
 ![](hardware/photos/Giz_OO1.jpg)
 
@@ -86,9 +86,9 @@ Rear panel- CAD holes for mounting a fan
 
 *Note: We highly recomend a cardboard prototype. 
 
-![](diagrams/Giz_prototype.png)
+![](diagrams/Giz_Prototype2.png)
 
-![](diagrams/Giz_prototype2.png)
+![](diagrams/Giz_prototype.png)
 
 
 ### Step 2: Assemble Bottle Holder Sub
