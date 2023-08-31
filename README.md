@@ -155,7 +155,7 @@ Note: For safety, we recommend placing the power supply in an external enclosure
 
 #### Pumps
 In this version of the Mocktails Mixer, we used eight (8) peristaltic pumps. These are rated and recommended for use at 12V, but you can run them up to 24V if you find that the pumps are running too slow. The pumps are all individually switched by a relay controlled by the Arduino Uno.
-![](hardware/photos/Giz002.jpg)
+![](hardware/photos/Giz_002.jpg)
 
 #### Lighting
 For visual feedback, we added an LED ring to the Mixer. We used the Adafruit Neopixel. It is very easy to wire and add additional rings, plus the library is easy to use. These draw a decent amount to amperage, so if you want to add more to your build, you will need to size your 5V power supply accordingly.
