@@ -13,10 +13,6 @@ In mid-July, after weeks of interdisciplinary training and exposure, each of the
 
 ![](diagrams/Giz_orthographic_diagram.png)
 
-## Project Information
-- **Estimated time to assemble:** 15 hours
-- **Difficulty:** Intermediate
-- **Cost:** About $570
 
 **Features:**
 
@@ -88,6 +84,12 @@ Lid Capture Panel- needed holes for the light wire
 Pump Relay Control Panel- CAD mount holes for brackets. CAD holes for wires from pumps to power and access for tubes to run through, holes for the relay to be mounted
 Rear panel- CAD holes for mounting a fan 
 
+*Note: We highly recomend a cardboard prototype. 
+
+![](diagrams/Giz_prototype.png)
+
+![](diagrams/Giz_prototype2.png)
+
 
 ### Step 2: Assemble Bottle Holder Sub
 Attach Top Panel with Bottle Capture Panel together with #10-32 x 1/2 inch length button socket cap and #10-32 x 1 inch length ¼ OD standoff.
@@ -120,9 +122,7 @@ Relay module. Attach the 8-Channel Relay Module directly above each pump on the 
 Tip: When attaching the fasteners, washers and standoffs to the relay module, allow them to be loose. This will help with easy alignment to the corresponding holes on the acrylic than retighten fasteners on relays.
 
 
-![](hardware/photos/002.jpg)
-
-![](hardware/photos/022.jpg)
+![](hardware/photos/Giz_018.jpg)
 
 
 #### Attach Arduino Uno and Arduino Mount.
@@ -132,6 +132,8 @@ Place the Arduino on the mount, matching the holes on the Arduino to the corresp
 
 #### Attach Raspberry Pi to Drip Panel.
 Attach the Raspberry Pi to the back panel using velcore. 
+
+![](diagrams/Giz_025.png)
 
 ## Wiring the Electrical System
 
@@ -153,6 +155,7 @@ Note: For safety, we recommend placing the power supply in an external enclosure
 
 #### Pumps
 In this version of the Mocktails Mixer, we used eight (8) peristaltic pumps. These are rated and recommended for use at 12V, but you can run them up to 24V if you find that the pumps are running too slow. The pumps are all individually switched by a relay controlled by the Arduino Uno.
+![](hardware/photos/Giz002.jpg)
 
 #### Lighting
 For visual feedback, we added an LED ring to the Mixer. We used the Adafruit Neopixel. It is very easy to wire and add additional rings, plus the library is easy to use. These draw a decent amount to amperage, so if you want to add more to your build, you will need to size your 5V power supply accordingly.
@@ -176,8 +179,6 @@ Note: The pumps used in this assembly produce a lot of ground noise that can tra
 ### Step 5: Wire the Pumps and Relay Module
 Before we start to wire the pumps and relays, first assemble the relay module. We used the SainSmart 8-Channel Relay Module for this build and the assembly instructions for it can be found [here](https://docs.sainsmart.com/article/u1jgnz4x6y-8-channel-5-v-relay-module-resource). We like it because it is easy to use and readily available—but cheaper alternatives are available.
 Next, mount all of the pumps and relays to Pump-Relay Control Panel.
-
-![](hardware/photos/004.jpg)
 
 Now we are ready to wire the pumps and relay module. First connect the 5V lines to the 5V Terminal on the module. We daisy chained the lines across the relays to reduce the amount of wires going to the main 5V terminal.
 
@@ -212,6 +213,8 @@ If you would like to add more LED rings, all you need to do is wire the DOUT fro
 
 ![](hardware/photos/017.jpg)
 
+![](hardware/photos/GIZCAP2_1.jpg)
+
 ### Step 7: Wire the Audio
 Since the microphone is USB controlled, there is no wiring necessary.
 
@@ -227,8 +230,6 @@ Double check the wiring. Trace all of them from each piece of hardware to their 
 ### Step 8: Assemble Pump Control Center Sub
 Assemble Pump/Relay Control Panel between Drip Panel and Pour Panel with corresponding tabs and slots on each sheet of acrylic. Make sure the pumps and relays that face the front of the unit are in front of the pour holes in the center pour plate.
 Use 10-32 standoffs and 10-32 fasteners to bring the sub-assembly together. A #10-32 X ½ inch length of all thread will be used to bring the #10-32 X 2 inch length standoff and #10-32 X 3 inch length standoffs together.
-
-![](hardware/photos/004.jpg)
 
 ### Step 9: Assemble Side Panel Sub
 Attach Outside Side Panel to Inside Side Panel using the #8-32 binding posts (Optional - You can omit these from the build. They help with holding the side panels together while assembling). The flat side of the binding post should face the Inside Side Panel. Six of the binding posts will be used per Side Assembly.
@@ -280,7 +281,7 @@ In the lids to the carafe, drill a 1/4 inch hole for tubing.
 ### Step 16: Place Bottle Assembly into Unit
 Fill bottles with desired liquid, place on top of the mixer, put the lid on each carafe, feed the tubing throught the hole all the way to the bottom of the carafe. 
 
-![](hardware/photos/011.jpg)
+![](hardware/photos/Giz_011.jpg)
 
 ## Programming the Mixer
 
