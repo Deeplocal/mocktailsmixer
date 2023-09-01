@@ -389,7 +389,7 @@ Push the button on the side to active.
 
 Ask for your drink of choice.
 
-[](diagrams/GIZmocktailMixer_QR.png)
+[](diagrams/MIXER_QR.png)
 
 [](diagrams/GIZmocktailMENUFinal.png)
 
