@@ -379,9 +379,19 @@ check if pm2 is running with pm2 l which should list the current processes that 
 
 ![](diagrams/Giz_system.png)
 
-### Step 20: Troubleshooting
-- If the LEDs or relays are not working, check the SER_DEVICE variable in bartender/\_\_main\_\_.py.
+## Step 20: Order you Drink
 
+Scan the QR code to find a list of drinks available. 
+
+Prep your glass as desired, place in the cup holder.
+
+Push the button on the side to active.
+
+Ask for your drink of choice.
+
+[](diagrams/GIZmocktailMixer_QR.png)
+
+[](diagrams/GIZmocktailMENUFinal.png)
 
 ## Cleaning Your Mixer
 
