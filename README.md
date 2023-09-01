@@ -373,16 +373,13 @@ Within the handleSerial() function there is a port.write(“a!”) command which
 - Connect to Raspberry Pi via USB.
 
 ### Step 19: Run system
-- Ensure you are still in the Python virtual environment. If not: `$ cd && source env/bin/activate`.
-- Change directory: `$ cd /home/pi/embedded-assistant-sdk-python`
-- Run the auth_helper to create an authorization file: `$ python -m googlesamples.rpi.auth_helpers --client-secrets /home/pi/client_secret_*.json`.
-- Run the system `$ python -m googlesamples.rpi`.
 
-### Step 20: Configure your own drinks
-- Using the api.ai web console, update the agent’s @drink entity and make_drink intent to reflect the drink names.
-- On your Raspberry Pi, update the DRINK_SIZE, MENU and NUM_BOTTLES variables in bartender/\_\_main\_\_.py.
+SSH into the pi with ssh dluser@10.0.7.197 and password deeplocal if that fails, plug and hdmi into the board and connect it to a monitor, and the board should show a grey screen with white text that shows its current IP address. It should auto-connect to devtest on boot (it has been so far)
+check if pm2 is running with pm2 l which should list the current processes that are running. If it's already running you can restart it with pm2 restart 0 or watch the logs with pm2 logs 0 , but if it's not running you need to cd ~/src/mocktailsmixer/software/rpi and then pm2 start index.js (and then you can view the logs to see what's happening with pm2 logs 0
 
-### Step 21: Troubleshooting
+![](diagrams/ Giz_system.png)
+
+### Step 20: Troubleshooting
 - If the LEDs or relays are not working, check the SER_DEVICE variable in bartender/\_\_main\_\_.py.
 
 
