@@ -1,0 +1,25 @@
+{
+  "name": "mocktails-bot-df",
+  "version": "1.0.0",
+  "main": "Test.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@google-cloud/dialogflow": "^5.9.0",
+    "@google-cloud/speech": "^5.6.0",
+    "@google-cloud/text-to-speech": "^4.2.3",
+    "dotenv": "^16.3.1",
+    "node-record-lpcm16": "^1.0.1",
+    "nodemon": "^3.0.1",
+    "play-sound": "^1.1.5",
+    "serialport": "^11.0.1",
+    "sox": "^0.1.0",
+    "uuid": "^9.0.0"
+  },
+  "description": ""
+}
